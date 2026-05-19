@@ -37,9 +37,11 @@
     "stellux"
   ],
   "license": "MIT",
+  "homepage": "https://github.com/stellux-ui/stellux-ui",
+  "bugs": "https://github.com/stellux-ui/stellux-ui/issues",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/stellux-ui/stellux-ui.git"
   },
   "sideEffects": [
     "**/*.css",
