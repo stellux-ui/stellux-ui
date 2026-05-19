@@ -22,6 +22,7 @@ pnpm add stellux-ui
 - [x] Button
 - [x] Button Group
 - [x] Container / Header / Footer / Aside / Main
+- [x] Layout (Row / Col)
 
 ### Form
 

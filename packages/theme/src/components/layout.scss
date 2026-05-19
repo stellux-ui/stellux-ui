@@ -1,0 +1,148 @@
+@use '../mixins/bem' as *;
+
+// ---- Row ----
+@include b(row) {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+
+  @include when(justify-center) { justify-content: center; }
+  @include when(justify-end) { justify-content: flex-end; }
+  @include when(justify-space-between) { justify-content: space-between; }
+  @include when(justify-space-around) { justify-content: space-around; }
+  @include when(justify-space-evenly) { justify-content: space-evenly; }
+
+  @include when(align-top) { align-items: flex-start; }
+  @include when(align-middle) { align-items: center; }
+  @include when(align-bottom) { align-items: flex-end; }
+}
+
+// ---- Col ----
+@include b(col) {
+  box-sizing: border-box;
+}
+
+// Generate: .stx-col-0 ~ .stx-col-24, offset, push, pull
+@for $i from 0 through 24 {
+  .stx-col-#{$i} {
+    max-width: calc(100% / 24 * #{$i});
+    flex: 0 0 calc(100% / 24 * #{$i});
+  }
+
+  .stx-col-offset-#{$i} {
+    margin-left: calc(100% / 24 * #{$i});
+  }
+
+  .stx-col-push-#{$i} {
+    position: relative;
+    left: calc(100% / 24 * #{$i});
+  }
+
+  .stx-col-pull-#{$i} {
+    position: relative;
+    right: calc(100% / 24 * #{$i});
+  }
+}
+
+.stx-col-0 {
+  display: none;
+}
+
+// ---- Responsive Breakpoints ----
+$breakpoints: (
+  xs: 768px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+  xl: 1920px,
+);
+
+// xs: max-width (mobile first for xs)
+@media only screen and (max-width: 767px) {
+  @for $i from 0 through 24 {
+    .stx-col-xs-#{$i} {
+      max-width: calc(100% / 24 * #{$i});
+      flex: 0 0 calc(100% / 24 * #{$i});
+    }
+
+    .stx-col-xs-offset-#{$i} {
+      margin-left: calc(100% / 24 * #{$i});
+    }
+  }
+
+  .stx-col-xs-0 {
+    display: none;
+  }
+}
+
+// sm: ≥768px
+@media only screen and (min-width: 768px) {
+  @for $i from 0 through 24 {
+    .stx-col-sm-#{$i} {
+      max-width: calc(100% / 24 * #{$i});
+      flex: 0 0 calc(100% / 24 * #{$i});
+    }
+
+    .stx-col-sm-offset-#{$i} {
+      margin-left: calc(100% / 24 * #{$i});
+    }
+  }
+
+  .stx-col-sm-0 {
+    display: none;
+  }
+}
+
+// md: ≥992px
+@media only screen and (min-width: 992px) {
+  @for $i from 0 through 24 {
+    .stx-col-md-#{$i} {
+      max-width: calc(100% / 24 * #{$i});
+      flex: 0 0 calc(100% / 24 * #{$i});
+    }
+
+    .stx-col-md-offset-#{$i} {
+      margin-left: calc(100% / 24 * #{$i});
+    }
+  }
+
+  .stx-col-md-0 {
+    display: none;
+  }
+}
+
+// lg: ≥1200px
+@media only screen and (min-width: 1200px) {
+  @for $i from 0 through 24 {
+    .stx-col-lg-#{$i} {
+      max-width: calc(100% / 24 * #{$i});
+      flex: 0 0 calc(100% / 24 * #{$i});
+    }
+
+    .stx-col-lg-offset-#{$i} {
+      margin-left: calc(100% / 24 * #{$i});
+    }
+  }
+
+  .stx-col-lg-0 {
+    display: none;
+  }
+}
+
+// xl: ≥1920px
+@media only screen and (min-width: 1920px) {
+  @for $i from 0 through 24 {
+    .stx-col-xl-#{$i} {
+      max-width: calc(100% / 24 * #{$i});
+      flex: 0 0 calc(100% / 24 * #{$i});
+    }
+
+    .stx-col-xl-offset-#{$i} {
+      margin-left: calc(100% / 24 * #{$i});
+    }
+  }
+
+  .stx-col-xl-0 {
+    display: none;
+  }
+}
