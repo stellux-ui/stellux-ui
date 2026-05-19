@@ -1,0 +1,46 @@
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+
+@include b(container) {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  flex-basis: auto;
+  box-sizing: border-box;
+  min-width: 0;
+
+  @include when(vertical) {
+    flex-direction: column;
+  }
+}
+
+@include b(header) {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+@include b(footer) {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+@include b(aside) {
+  overflow: auto;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+@include b(main) {
+  display: flex;
+  flex: 1;
+  flex-basis: auto;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 20px;
+}

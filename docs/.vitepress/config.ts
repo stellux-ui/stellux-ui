@@ -42,7 +42,10 @@ export default defineConfig({
       '/components/': [
         {
           text: 'Basic',
-          items: [{ text: 'Button', link: '/components/button' }]
+          items: [
+            { text: 'Button', link: '/components/button' },
+            { text: 'Container', link: '/components/container' },
+          ]
         }
       ]
     },
