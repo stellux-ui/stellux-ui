@@ -1,0 +1,10 @@
+{
+  "name": "@stellux/theme",
+  "version": "0.0.1",
+  "description": "Theme system for Stellux UI",
+  "main": "src/index.scss",
+  "files": [
+    "src"
+  ],
+  "license": "MIT"
+}

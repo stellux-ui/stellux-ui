@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use 'config' as *;
+@use 'function' as *;
+
+// Set component-level CSS variables from a map
+// Usage: @include set-component-css-var('button', $button-vars);
+// Output: --stx-button-bg-color: value;
+@mixin set-component-css-var($name, $variables) {
+  @each $key, $value in $variables {
+    #{getCssVarName($name, $key)}: #{$value};
+  }
+}
+
+// Set CSS variable from global token
+// Usage: @include set-css-var-from-global('button', 'text-color', 'color-text-primary');
+// Output: --stx-button-text-color: var(--stx-color-text-primary);
+@mixin set-css-var-from-global($component, $component-var, $global-var) {
+  #{getCssVarName($component, $component-var)}: getCssVar($global-var);
+}

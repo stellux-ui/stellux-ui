@@ -1,0 +1,112 @@
+:root {
+  // ============ Colors — Creative Indigo ============
+  --stx-color-primary: #6366f1;
+  --stx-color-primary-light: #818cf8;
+  --stx-color-primary-dark: #4f46e5;
+  --stx-color-primary-soft: rgba(99, 102, 241, 0.1);
+
+  --stx-color-success: #10b981;
+  --stx-color-success-light: #34d399;
+  --stx-color-success-dark: #059669;
+
+  --stx-color-warning: #f59e0b;
+  --stx-color-warning-light: #fbbf24;
+  --stx-color-warning-dark: #d97706;
+
+  --stx-color-danger: #f43f5e;
+  --stx-color-danger-light: #fb7185;
+  --stx-color-danger-dark: #e11d48;
+
+  --stx-color-info: #0ea5e9;
+  --stx-color-info-light: #38bdf8;
+  --stx-color-info-dark: #0284c7;
+
+  // ============ Neutral ============
+  --stx-color-text-primary: #1e293b;
+  --stx-color-text-regular: #475569;
+  --stx-color-text-secondary: #64748b;
+  --stx-color-text-placeholder: #94a3b8;
+  --stx-color-text-disabled: #cbd5e1;
+
+  --stx-color-bg: #ffffff;
+  --stx-color-bg-page: #f8fafc;
+  --stx-color-bg-overlay: rgba(248, 250, 252, 0.96);
+
+  --stx-color-border: #e2e8f0;
+  --stx-color-border-light: #f1f5f9;
+  --stx-color-border-dark: #cbd5e1;
+
+  // ============ Typography ============
+  --stx-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --stx-font-size-xs: 12px;
+  --stx-font-size-sm: 13px;
+  --stx-font-size-base: 14px;
+  --stx-font-size-md: 16px;
+  --stx-font-size-lg: 18px;
+  --stx-font-size-xl: 20px;
+
+  // ============ Spacing ============
+  --stx-spacing-xs: 4px;
+  --stx-spacing-sm: 8px;
+  --stx-spacing-md: 12px;
+  --stx-spacing-lg: 16px;
+  --stx-spacing-xl: 24px;
+
+  // ============ Border Radius ============
+  --stx-radius-sm: 4px;
+  --stx-radius-base: 6px;
+  --stx-radius-lg: 8px;
+  --stx-radius-round: 999px;
+
+  // ============ Shadow ============
+  --stx-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --stx-shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --stx-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --stx-shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.08);
+
+  // ============ Transition ============
+  --stx-transition-duration: 0.15s;
+  --stx-transition-timing: ease;
+}
+
+// ============ Dark Mode ============
+[data-theme='dark'],
+.dark {
+  --stx-color-primary: #818cf8;
+  --stx-color-primary-light: #a5b4fc;
+  --stx-color-primary-dark: #6366f1;
+  --stx-color-primary-soft: rgba(129, 140, 248, 0.12);
+
+  --stx-color-success: #34d399;
+  --stx-color-success-light: #6ee7b7;
+  --stx-color-success-dark: #10b981;
+
+  --stx-color-warning: #fbbf24;
+  --stx-color-warning-light: #fcd34d;
+  --stx-color-warning-dark: #f59e0b;
+
+  --stx-color-danger: #fb7185;
+  --stx-color-danger-light: #fda4af;
+  --stx-color-danger-dark: #f43f5e;
+
+  --stx-color-info: #38bdf8;
+  --stx-color-info-light: #7dd3fc;
+  --stx-color-info-dark: #0ea5e9;
+
+  --stx-color-text-primary: #f1f5f9;
+  --stx-color-text-regular: #e2e8f0;
+  --stx-color-text-secondary: #94a3b8;
+  --stx-color-text-placeholder: #64748b;
+  --stx-color-text-disabled: #475569;
+
+  --stx-color-bg: #0f172a;
+  --stx-color-bg-page: #1e293b;
+  --stx-color-bg-overlay: rgba(15, 23, 42, 0.92);
+
+  --stx-color-border: #334155;
+  --stx-color-border-light: #1e293b;
+  --stx-color-border-dark: #475569;
+
+  --stx-shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.3);
+}

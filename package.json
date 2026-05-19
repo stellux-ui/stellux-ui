@@ -1,0 +1,31 @@
+{
+  "name": "stellux-ui-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Stellux UI - A Vue 3 component library with high freedom, high inclusivity, and high performance",
+  "packageManager": "pnpm@10.25.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm -C playground dev",
+    "build": "pnpm -C packages/stellux-ui build",
+    "docs:dev": "pnpm -C docs dev",
+    "docs:build": "pnpm -C docs build",
+    "test": "vitest",
+    "lint": "eslint . --ext .ts,.tsx,.vue"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.0",
+    "sass": "^1.88.0",
+    "typescript": "^5.8.0",
+    "vite": "^6.3.0",
+    "vitest": "^3.1.0",
+    "vue": "^3.5.0",
+    "vue-tsc": "^2.2.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "license": "MIT"
+}

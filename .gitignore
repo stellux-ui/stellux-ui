@@ -1,0 +1,16 @@
+node_modules
+dist
+.DS_Store
+*.local
+*.log
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# Testing
+coverage
+
+# Build
+*.tsbuildinfo

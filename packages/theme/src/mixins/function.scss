@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+@use 'config' as *;
+
+// Generate CSS variable name: --stx-button-bg-color
+@function getCssVarName($args...) {
+  $name: '--#{$namespace}';
+  @each $arg in $args {
+    @if $arg != '' {
+      $name: #{$name}-#{$arg};
+    }
+  }
+  @return $name;
+}
+
+// Generate CSS variable reference: var(--stx-button-bg-color)
+@function getCssVar($args...) {
+  @return var(#{getCssVarName($args...)});
+}
+
+// Generate CSS variable reference with fallback: var(--stx-button-bg-color, #fff)
+@function getCssVarWithDefault($args, $default) {
+  @return var(#{getCssVarName($args...)}, #{$default});
+}

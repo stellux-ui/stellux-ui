@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "preserve",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "paths": {
+      "@stellux/components": ["./packages/components/src"],
+      "@stellux/components/*": ["./packages/components/src/*"],
+      "@stellux/theme": ["./packages/theme/src"],
+      "@stellux/theme/*": ["./packages/theme/src/*"],
+      "@stellux/utils": ["./packages/utils/src"],
+      "@stellux/utils/*": ["./packages/utils/src/*"],
+      "@stellux/hooks": ["./packages/hooks/src"],
+      "@stellux/hooks/*": ["./packages/hooks/src/*"],
+      "@stellux/directives": ["./packages/directives/src"],
+      "@stellux/directives/*": ["./packages/directives/src/*"],
+      "stellux-ui": ["./packages/stellux-ui/src"]
+    },
+    "types": ["vitest/globals"]
+  },
+  "include": ["packages/*/src/**/*.ts", "packages/*/src/**/*.vue", "playground/src/**/*.ts", "playground/src/**/*.vue", "env.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}
