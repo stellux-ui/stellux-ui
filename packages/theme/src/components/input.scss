@@ -1,0 +1,260 @@
+@use 'sass:map';
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/_var' as *;
+@use '../common/var';
+
+$input: () !default;
+$input: map.merge(
+  (
+    'height': 32px,
+    'font-size': getCssVar('font-size-base'),
+    'text-color': getCssVar('color-text-primary'),
+    'placeholder-color': getCssVar('color-text-placeholder'),
+    'bg-color': getCssVar('color-bg'),
+    'border-color': getCssVar('color-border'),
+    'border-radius': getCssVar('radius-base'),
+    'hover-border-color': getCssVar('color-border-dark'),
+    'focus-border-color': getCssVar('color-primary'),
+    'disabled-bg': getCssVar('color-bg-page'),
+    'disabled-text': getCssVar('color-text-disabled'),
+  ),
+  $input,
+);
+
+// ---- Input ----
+@include b(input) {
+  @include set-component-css-var('input', $input);
+
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+  font-size: getCssVar('input', 'font-size');
+  vertical-align: middle;
+
+  @include m(small) {
+    --stx-input-height: 28px;
+    --stx-input-font-size: #{getCssVar('font-size-sm')};
+  }
+
+  @include m(large) {
+    --stx-input-height: 40px;
+    --stx-input-font-size: #{getCssVar('font-size-md')};
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+
+    .stx-input__wrapper {
+      background-color: getCssVar('input', 'disabled-bg');
+      cursor: not-allowed;
+    }
+
+    .stx-input__inner {
+      color: getCssVar('input', 'disabled-text');
+      cursor: not-allowed;
+    }
+  }
+
+  // ---- Wrapper ----
+  @include e(wrapper) {
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+    padding: 0 12px;
+    background-color: getCssVar('input', 'bg-color');
+    border: 1px solid getCssVar('input', 'border-color');
+    border-radius: getCssVar('input', 'border-radius');
+    transition: border-color 0.15s ease;
+
+    &:hover {
+      border-color: getCssVar('input', 'hover-border-color');
+    }
+  }
+
+  @include when(focused) {
+    .stx-input__wrapper {
+      border-color: getCssVar('input', 'focus-border-color');
+    }
+  }
+
+  // ---- Inner ----
+  @include e(inner) {
+    flex: 1;
+    width: 100%;
+    height: getCssVar('input', 'height');
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: inherit;
+    font-family: inherit;
+    color: getCssVar('input', 'text-color');
+    line-height: getCssVar('input', 'height');
+
+    &::placeholder {
+      color: getCssVar('input', 'placeholder-color');
+    }
+  }
+
+  // ---- Prefix / Suffix ----
+  @include e(prefix) {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 8px;
+    color: getCssVar('color-text-secondary');
+    flex-shrink: 0;
+  }
+
+  @include e(suffix) {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8px;
+    color: getCssVar('color-text-secondary');
+    flex-shrink: 0;
+    gap: 4px;
+  }
+
+  @include e(icon) {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1em;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  // ---- Clear / Password ----
+  @include e(clear) {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    color: getCssVar('color-text-placeholder');
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: getCssVar('color-text-secondary');
+    }
+  }
+
+  @include e(password) {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    color: getCssVar('color-text-placeholder');
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: getCssVar('color-text-secondary');
+    }
+  }
+
+  // ---- Word count ----
+  @include e(count) {
+    display: inline-flex;
+    align-items: center;
+    font-size: getCssVar('font-size-xs');
+    color: getCssVar('color-text-placeholder');
+  }
+
+  // ---- Prepend / Append ----
+  @include e(prepend) {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    background-color: getCssVar('color-bg-page');
+    border: 1px solid getCssVar('input', 'border-color');
+    border-right: 0;
+    border-radius: getCssVar('input', 'border-radius') 0 0 getCssVar('input', 'border-radius');
+    color: getCssVar('color-text-regular');
+    font-size: inherit;
+    white-space: nowrap;
+  }
+
+  @include m(prepend) {
+    .stx-input__wrapper {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  @include e(append) {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    background-color: getCssVar('color-bg-page');
+    border: 1px solid getCssVar('input', 'border-color');
+    border-left: 0;
+    border-radius: 0 getCssVar('input', 'border-radius') getCssVar('input', 'border-radius') 0;
+    color: getCssVar('color-text-regular');
+    font-size: inherit;
+    white-space: nowrap;
+  }
+
+  @include m(append) {
+    .stx-input__wrapper {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+// ---- Textarea ----
+@include b(textarea) {
+  display: inline-flex;
+  width: 100%;
+  position: relative;
+  font-size: getCssVar('font-size-base');
+  vertical-align: middle;
+
+  @include when(disabled) {
+    cursor: not-allowed;
+
+    .stx-textarea__inner {
+      background-color: getCssVar('color-bg-page');
+      color: getCssVar('color-text-disabled');
+      cursor: not-allowed;
+    }
+  }
+
+  @include when(focused) {
+    .stx-textarea__inner {
+      border-color: getCssVar('color-primary');
+    }
+  }
+
+  @include e(inner) {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid getCssVar('color-border');
+    border-radius: getCssVar('radius-base');
+    background-color: getCssVar('color-bg');
+    color: getCssVar('color-text-primary');
+    font-size: inherit;
+    font-family: inherit;
+    line-height: 1.5;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.15s ease;
+
+    &:hover {
+      border-color: getCssVar('color-border-dark');
+    }
+
+    &::placeholder {
+      color: getCssVar('color-text-placeholder');
+    }
+  }
+
+  .stx-input__count {
+    position: absolute;
+    bottom: 6px;
+    right: 12px;
+    font-size: getCssVar('font-size-xs');
+    color: getCssVar('color-text-placeholder');
+  }
+}

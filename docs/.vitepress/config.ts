@@ -46,6 +46,12 @@ export default defineConfig({
             { text: 'Button', link: '/components/button' },
             { text: 'Container', link: '/components/container' },
             { text: 'Layout', link: '/components/layout' },
+          ],
+        },
+        {
+          text: 'Form',
+          items: [
+            { text: 'Input', link: '/components/input' },
           ]
         }
       ]

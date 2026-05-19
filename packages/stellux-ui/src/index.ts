@@ -3,6 +3,7 @@ import {
   StxButton, StxButtonGroup,
   StxContainer, StxHeader, StxFooter, StxAside, StxMain,
   StxRow, StxCol,
+  StxInput,
 } from '@stellux/components'
 import { vRipple } from '@stellux/directives'
 import '@stellux/theme/src/index.scss'
@@ -11,6 +12,7 @@ const components = [
   StxButton, StxButtonGroup,
   StxContainer, StxHeader, StxFooter, StxAside, StxMain,
   StxRow, StxCol,
+  StxInput,
 ]
 
 export function install(app: App) {
@@ -23,6 +25,7 @@ export function install(app: App) {
 export { StxButton, StxButtonGroup }
 export { StxContainer, StxHeader, StxFooter, StxAside, StxMain }
 export { StxRow, StxCol }
+export { StxInput }
 export { vRipple }
 export * from '@stellux/hooks'
 

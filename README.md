@@ -26,7 +26,7 @@ pnpm add stellux-ui
 
 ### Form
 
-- [ ] Input
+- [x] Input
 - [ ] Select
 - [ ] Radio
 - [ ] Checkbox
