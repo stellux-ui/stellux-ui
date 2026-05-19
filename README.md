@@ -7,17 +7,6 @@
 
 A Vue 3 component library built around three principles: **High Freedom**, **High Inclusivity**, and **High Performance**.
 
-## Features
-
-- Vue 3 + TypeScript + Vite
-- Component-level CSS variable system for deep customization
-- BEM naming convention with `stx-` prefix
-- Built-in light & dark mode
-- WAI-ARIA accessible by default
-- Tree-shakable, per-component imports
-- `v-ripple` directive for any element
-- SSR-friendly (Nuxt compatible)
-
 ## Install
 
 ```bash
@@ -26,79 +15,70 @@ npm install stellux-ui
 pnpm add stellux-ui
 ```
 
-## Quick Start
+## Component Progress
 
-```ts
-// main.ts
-import { createApp } from 'vue'
-import StelluxUI from 'stellux-ui'
-import 'stellux-ui/dist/style.css'
-import App from './App.vue'
+### Basic
 
-createApp(App).use(StelluxUI).mount('#app')
-```
+- [x] Button
+- [x] Button Group
+- [x] Container / Header / Footer / Aside / Main
 
-```vue
-<template>
-  <stx-button type="primary">Hello Stellux</stx-button>
-</template>
-```
+### Form
 
-## On-Demand Import
+- [ ] Input
+- [ ] Select
+- [ ] Radio
+- [ ] Checkbox
+- [ ] Switch
+- [ ] Slider
+- [ ] DatePicker
+- [ ] TimePicker
+- [ ] Upload
+- [ ] Form
 
-```ts
-import { StxButton, StxButtonGroup } from 'stellux-ui'
-```
+### Data
 
-## Packages
+- [ ] Table
+- [ ] Tag
+- [ ] Badge
+- [ ] Avatar
+- [ ] Pagination
+- [ ] Tree
+- [ ] Progress
 
-| Package               | Description                       |
-| --------------------- | --------------------------------- |
-| `stellux-ui`          | Full bundle entry                 |
-| `@stellux/components` | Vue components                    |
-| `@stellux/theme`      | SCSS theme system & design tokens |
-| `@stellux/directives` | Directives (`v-ripple`, etc.)     |
-| `@stellux/hooks`      | Composition API hooks             |
-| `@stellux/utils`      | Shared utilities                  |
+### Navigation
 
-## Development
+- [ ] Menu
+- [ ] Tabs
+- [ ] Breadcrumb
+- [ ] Dropdown
+- [ ] Steps
 
-```bash
-# Clone
-git clone https://github.com/stellux-ui/stellux-ui.git
-cd stellux-ui
+### Feedback
 
-# Install dependencies
-pnpm install
+- [ ] Dialog
+- [ ] Drawer
+- [ ] Message
+- [ ] MessageBox
+- [ ] Notification
+- [ ] Tooltip
+- [ ] Popover
+- [ ] Loading
 
-# Start playground dev server
-pnpm dev
+### Other
 
-# Build
-pnpm build
-```
+- [ ] Divider
+- [ ] Collapse
+- [ ] Card
+- [ ] Carousel
+- [ ] Calendar
+- [ ] Skeleton
+- [ ] Empty
+- [ ] Scrollbar
 
-## Theme Customization
+### Directives
 
-Override CSS variables to customize the look:
-
-```css
-:root {
-  --stx-color-primary: #6366f1;
-  --stx-color-primary-light: #818cf8;
-  --stx-color-primary-dark: #4f46e5;
-}
-```
-
-Per-component customization:
-
-```css
-.my-custom-button {
-  --stx-button-bg-color: #ff6700;
-  --stx-button-text-color: #fff;
-  --stx-button-border-color: #ff6700;
-}
-```
+- [x] v-ripple
 
 ## Contributing
 
