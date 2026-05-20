@@ -20,32 +20,59 @@ pnpm add stellux-ui
 ### Basic
 
 - [x] Button
-- [x] Button Group
-- [x] Container / Header / Footer / Aside / Main
-- [x] Layout (Row / Col)
+- [x] Icon
+- [ ] Link
+- [ ] Text
+- [ ] Scrollbar
+- [ ] Space
+- [ ] Divider
+- [ ] Splitter
 
 ### Form
 
 - [x] Input
+- [ ] InputNumber
+- [ ] InputTag
+- [ ] InputOTP
 - [ ] Select
 - [ ] Radio
 - [ ] Checkbox
 - [ ] Switch
 - [ ] Slider
+- [ ] Rate
+- [ ] ColorPicker
 - [ ] DatePicker
 - [ ] TimePicker
 - [ ] Upload
+- [ ] Transfer
+- [ ] Cascader
+- [ ] Autocomplete
+- [ ] Mention
 - [ ] Form
 
-### Data
+### Data Display
 
 - [ ] Table
 - [ ] Tag
 - [ ] Badge
 - [ ] Avatar
+- [ ] Card
+- [ ] Carousel
+- [ ] Calendar
+- [ ] Collapse
+- [ ] Descriptions
+- [ ] Empty
+- [ ] Image
 - [ ] Pagination
-- [ ] Tree
 - [ ] Progress
+- [ ] Result
+- [ ] Skeleton
+- [ ] Statistic
+- [ ] Segmented
+- [ ] Timeline
+- [ ] Tree
+- [ ] TreeSelect
+- [ ] InfiniteScroll
 
 ### Navigation
 
@@ -53,7 +80,11 @@ pnpm add stellux-ui
 - [ ] Tabs
 - [ ] Breadcrumb
 - [ ] Dropdown
+- [ ] PageHeader
 - [ ] Steps
+- [ ] Affix
+- [ ] Backtop
+- [ ] Anchor
 
 ### Feedback
 
@@ -64,18 +95,21 @@ pnpm add stellux-ui
 - [ ] Notification
 - [ ] Tooltip
 - [ ] Popover
+- [ ] Popconfirm
 - [ ] Loading
+- [ ] Alert
 
 ### Other
 
-- [ ] Divider
-- [ ] Collapse
-- [ ] Card
-- [ ] Carousel
-- [ ] Calendar
-- [ ] Skeleton
-- [ ] Empty
-- [ ] Scrollbar
+- [ ] Overlay
+- [ ] CollapseTransition
+- [ ] Tour
+- [ ] Watermark
+
+### Layout
+
+- [x] Container / Header / Footer / Aside / Main
+- [x] Row / Col
 
 ### Directives
 

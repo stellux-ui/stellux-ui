@@ -1,0 +1,19 @@
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/config' as *;
+
+@include b(icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: inherit;
+  font-style: normal;
+  color: inherit;
+
+  svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+  }
+}
