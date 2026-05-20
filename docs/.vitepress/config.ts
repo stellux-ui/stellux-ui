@@ -39,6 +39,7 @@ export default defineConfig({
             { text: 'Switch', link: '/components/switch' },
             { text: 'InputNumber', link: '/components/input-number' },
             { text: 'Select', link: '/components/select' },
+            { text: 'Rate', link: '/components/rate' },
         ]},
         { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
             { text: 'Badge', link: '/components/badge' },

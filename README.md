@@ -39,7 +39,7 @@ pnpm add stellux-ui
 - [x] Checkbox
 - [x] Switch
 - [ ] Slider
-- [ ] Rate
+- [x] Rate
 - [ ] ColorPicker
 - [ ] DatePicker
 - [ ] TimePicker

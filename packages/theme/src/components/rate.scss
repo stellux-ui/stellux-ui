@@ -1,0 +1,100 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(rate) {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+
+  @include when(disabled) {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  @include e(item) {
+    position: relative;
+    display: inline-block;
+    font-size: 18px;
+    width: 1em;
+    height: 1em;
+    margin-right: 6px;
+    cursor: pointer;
+    vertical-align: middle;
+    transition: transform 0.15s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include when(active) {
+      // Full star is fully visible
+    }
+  }
+
+  @include e(icon) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: color 0.15s ease;
+
+    &--full {
+      overflow: hidden;
+      z-index: 1;
+    }
+  }
+
+  @include e(text) {
+    margin-left: 8px;
+    font-size: 14px;
+    color: var(--stx-color-text-regular);
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  @include e(score) {
+    margin-left: 8px;
+    font-size: 14px;
+    color: var(--stx-color-text-regular);
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  // Sizes
+  @include m(small) {
+    .#{$namespace}-rate__item {
+      font-size: 14px;
+      margin-right: 4px;
+    }
+
+    .#{$namespace}-rate__text,
+    .#{$namespace}-rate__score {
+      font-size: 12px;
+    }
+  }
+
+  @include m(large) {
+    .#{$namespace}-rate__item {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+
+    .#{$namespace}-rate__text,
+    .#{$namespace}-rate__score {
+      font-size: 16px;
+    }
+  }
+
+  @include when(disabled) {
+    .#{$namespace}-rate__item {
+      cursor: default;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}
