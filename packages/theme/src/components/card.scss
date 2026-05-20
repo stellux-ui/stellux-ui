@@ -1,0 +1,44 @@
+@use '../mixins/bem' as *;
+
+@include b(card) {
+  border: 1px solid var(--stx-border-color, #e4e7ed);
+  border-radius: var(--stx-radius-base, 4px);
+  background-color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+
+  @include when(shadow-always) {
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  @include when(shadow-hover) {
+    &:hover {
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  @include when(shadow-never) {
+    box-shadow: none;
+  }
+
+  @include e(header) {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--stx-border-color, #e4e7ed);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--stx-color-text-primary, #303133);
+    box-sizing: border-box;
+  }
+
+  @include e(body) {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  @include e(footer) {
+    padding: 16px 20px;
+    border-top: 1px solid var(--stx-border-color, #e4e7ed);
+    box-sizing: border-box;
+  }
+}
