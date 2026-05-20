@@ -60,6 +60,7 @@ export default defineConfig({
             { text: 'InfiniteScroll', link: '/components/infinite-scroll' },
             { text: 'Table', link: '/components/table' },
             { text: 'Image', link: '/components/image' },
+            { text: 'Pagination', link: '/components/pagination' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },

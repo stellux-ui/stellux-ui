@@ -63,7 +63,7 @@ pnpm add stellux-ui
 - [x] Descriptions
 - [x] Empty
 - [x] Image
-- [ ] Pagination
+- [x] Pagination
 - [x] Progress
 - [x] Result
 - [x] Skeleton

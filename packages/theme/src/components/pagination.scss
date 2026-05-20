@@ -1,0 +1,241 @@
+@use 'sass:map';
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/_var' as *;
+@use '../common/var';
+
+$pagination: () !default;
+$pagination: map.merge(
+  (
+    'font-size': getCssVar('font-size-base'),
+    'font-size-sm': getCssVar('font-size-sm'),
+    'text-color': getCssVar('color-text-regular'),
+    'btn-size': 28px,
+    'btn-size-sm': 24px,
+    'btn-bg': transparent,
+    'btn-border': getCssVar('color-border'),
+    'btn-hover-color': getCssVar('color-primary'),
+    'btn-hover-bg': getCssVar('color-primary-soft'),
+    'btn-disabled-color': getCssVar('color-text-disabled'),
+    'active-bg': getCssVar('color-primary'),
+    'active-color': #ffffff,
+    'bg-color': getCssVar('color-bg-page'),
+  ),
+  $pagination,
+);
+
+@include b(pagination) {
+  @include set-component-css-var('pagination', $pagination);
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: getCssVar('pagination', 'font-size');
+  color: getCssVar('pagination', 'text-color');
+  white-space: nowrap;
+
+  @include when(disabled) {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  // --- Small ---
+  @include when(small) {
+    font-size: getCssVar('pagination', 'font-size-sm');
+
+    .stx-pagination__btn,
+    .stx-pagination__prev,
+    .stx-pagination__next,
+    .stx-pagination__number {
+      min-width: getCssVar('pagination', 'btn-size-sm');
+      height: getCssVar('pagination', 'btn-size-sm');
+      font-size: getCssVar('pagination', 'font-size-sm');
+    }
+
+    .stx-pagination__editor {
+      width: 40px;
+      height: getCssVar('pagination', 'btn-size-sm');
+      font-size: getCssVar('pagination', 'font-size-sm');
+    }
+  }
+
+  // --- Background mode ---
+  @include when(background) {
+    .stx-pagination__number {
+      background-color: getCssVar('pagination', 'bg-color');
+      border: none;
+
+      &.is-active {
+        background-color: getCssVar('pagination', 'active-bg');
+        color: getCssVar('pagination', 'active-color');
+      }
+    }
+
+    .stx-pagination__prev,
+    .stx-pagination__next {
+      background-color: getCssVar('pagination', 'bg-color');
+      border: none;
+    }
+  }
+
+  // --- Total ---
+  @include e(total) {
+    margin-right: 8px;
+    color: getCssVar('color-text-secondary');
+    font-weight: 400;
+  }
+
+  // --- Sizes ---
+  @include e(sizes) {
+    margin: 0 4px;
+  }
+
+  // --- Buttons (prev/next) ---
+  @include e(btn) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: getCssVar('pagination', 'btn-size');
+    height: getCssVar('pagination', 'btn-size');
+    padding: 0;
+    border: 1px solid getCssVar('pagination', 'btn-border');
+    border-radius: getCssVar('radius-sm');
+    background-color: getCssVar('pagination', 'btn-bg');
+    color: getCssVar('pagination', 'text-color');
+    cursor: pointer;
+    outline: none;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+
+    &:hover:not(:disabled) {
+      color: getCssVar('pagination', 'btn-hover-color');
+      border-color: getCssVar('pagination', 'btn-hover-color');
+    }
+
+    &:disabled {
+      color: getCssVar('pagination', 'btn-disabled-color');
+      cursor: not-allowed;
+      border-color: getCssVar('pagination', 'btn-border');
+    }
+
+    svg {
+      display: block;
+    }
+  }
+
+  @include e(prev) {
+    margin-right: 2px;
+  }
+
+  @include e(next) {
+    margin-left: 2px;
+  }
+
+  // --- Pager ---
+  @include e(pager) {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @include e(number) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: getCssVar('pagination', 'btn-size');
+    height: getCssVar('pagination', 'btn-size');
+    padding: 0 4px;
+    border: 1px solid transparent;
+    border-radius: getCssVar('radius-sm');
+    background-color: transparent;
+    color: getCssVar('pagination', 'text-color');
+    font-size: getCssVar('pagination', 'font-size');
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: getCssVar('pagination', 'btn-hover-color');
+    }
+
+    @include when(active) {
+      background-color: getCssVar('pagination', 'active-bg');
+      color: getCssVar('pagination', 'active-color');
+      border-color: getCssVar('pagination', 'active-bg');
+      font-weight: 600;
+      cursor: default;
+    }
+
+    // quickprev / quicknext
+    &.is-quickprev,
+    &.is-quicknext {
+      .stx-pagination__quick-arrow {
+        display: none;
+      }
+
+      .stx-pagination__ellipsis {
+        display: inline-flex;
+      }
+
+      &:hover {
+        color: getCssVar('pagination', 'btn-hover-color');
+
+        .stx-pagination__quick-arrow {
+          display: inline-flex;
+        }
+
+        .stx-pagination__ellipsis {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // --- Jump ---
+  @include e(jump) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 8px;
+    color: getCssVar('color-text-secondary');
+  }
+
+  @include e(editor) {
+    width: 48px;
+    height: getCssVar('pagination', 'btn-size');
+    padding: 0 4px;
+    border: 1px solid getCssVar('pagination', 'btn-border');
+    border-radius: getCssVar('radius-sm');
+    background-color: getCssVar('color-bg');
+    color: getCssVar('pagination', 'text-color');
+    font-size: getCssVar('pagination', 'font-size');
+    text-align: center;
+    outline: none;
+    transition: border-color 0.15s ease;
+    // Hide number input spinners
+    -moz-appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &:focus {
+      border-color: getCssVar('color-primary');
+    }
+
+    &:disabled {
+      background-color: getCssVar('color-bg-page');
+      color: getCssVar('color-text-disabled');
+      cursor: not-allowed;
+    }
+  }
+
+  // --- Spacer ---
+  @include e(spacer) {
+    flex: 1;
+  }
+}
