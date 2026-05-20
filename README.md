@@ -61,7 +61,7 @@ pnpm add stellux-ui
 - [ ] Calendar
 - [ ] Collapse
 - [ ] Descriptions
-- [ ] Empty
+- [x] Empty
 - [ ] Image
 - [ ] Pagination
 - [ ] Progress
