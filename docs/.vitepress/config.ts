@@ -39,6 +39,7 @@ export default defineConfig({
         ]},
         { text: 'Navigation', items: [        ]},
         { text: 'Feedback', items: [            { text: 'Alert', link: '/components/alert' },
+            { text: 'Tooltip', link: '/components/tooltip' },
         ]},
         { text: 'Other', items: [        ]},
       ]
