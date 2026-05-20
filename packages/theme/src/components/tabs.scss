@@ -1,0 +1,232 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(tabs) {
+  @include e(header) {
+    position: relative;
+    border-bottom: 2px solid var(--stx-color-border-light);
+  }
+
+  @include e(nav-wrap) {
+    overflow: hidden;
+    position: relative;
+  }
+
+  @include e(nav) {
+    display: flex;
+    position: relative;
+    white-space: nowrap;
+    transition: transform 0.3s;
+  }
+
+  @include e(active-bar) {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--stx-color-primary);
+    transition: left 0.3s, width 0.3s;
+  }
+
+  @include e(item) {
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: var(--stx-color-text-regular);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+    position: relative;
+    box-sizing: border-box;
+
+    &:hover {
+      color: var(--stx-color-primary);
+    }
+
+    @include when(active) {
+      color: var(--stx-color-primary);
+      font-weight: 500;
+    }
+
+    @include when(disabled) {
+      color: var(--stx-color-text-disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(close) {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 50%;
+    padding: 1px;
+    transition: background-color 0.15s, color 0.15s;
+    color: var(--stx-color-text-secondary);
+
+    &:hover {
+      background-color: var(--stx-color-text-secondary);
+      color: #fff;
+    }
+  }
+
+  @include e(add) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 6px 8px;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-sm);
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--stx-color-text-regular);
+
+    &:hover {
+      color: var(--stx-color-primary);
+      border-color: var(--stx-color-primary);
+    }
+  }
+
+  @include e(content) {
+    padding: 16px 0;
+  }
+
+  // Card type
+  @include m(card) {
+    .#{$namespace}-tabs__header {
+      border-bottom: 1px solid var(--stx-color-border);
+    }
+
+    .#{$namespace}-tabs__item {
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: var(--stx-radius-sm) var(--stx-radius-sm) 0 0;
+      margin-bottom: -1px;
+
+      &.is-active {
+        background: var(--stx-color-bg);
+        border-color: var(--stx-color-border);
+      }
+    }
+
+    .#{$namespace}-tabs__active-bar {
+      display: none;
+    }
+  }
+
+  // Border-card type
+  @include m(border-card) {
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    overflow: hidden;
+
+    .#{$namespace}-tabs__header {
+      background: var(--stx-color-bg-page);
+      border-bottom: 1px solid var(--stx-color-border);
+    }
+
+    .#{$namespace}-tabs__item {
+      margin-bottom: -1px;
+      border: 1px solid transparent;
+
+      &.is-active {
+        background: var(--stx-color-bg);
+        border-color: var(--stx-color-border);
+        border-bottom-color: var(--stx-color-bg);
+      }
+    }
+
+    .#{$namespace}-tabs__content {
+      padding: 16px;
+    }
+
+    .#{$namespace}-tabs__active-bar {
+      display: none;
+    }
+  }
+
+  // Position left/right shared styles
+  @include m(left) {
+    display: flex;
+
+    .#{$namespace}-tabs__header {
+      border-bottom: none;
+    }
+
+    .#{$namespace}-tabs__nav {
+      flex-direction: column;
+    }
+
+    .#{$namespace}-tabs__active-bar {
+      width: 2px;
+      height: auto;
+      bottom: auto;
+      transition: top 0.3s, height 0.3s;
+    }
+
+    .#{$namespace}-tabs__content {
+      flex: 1;
+      padding: 0 16px;
+    }
+  }
+
+  @include m(right) {
+    display: flex;
+
+    .#{$namespace}-tabs__header {
+      border-bottom: none;
+    }
+
+    .#{$namespace}-tabs__nav {
+      flex-direction: column;
+    }
+
+    .#{$namespace}-tabs__active-bar {
+      width: 2px;
+      height: auto;
+      bottom: auto;
+      transition: top 0.3s, height 0.3s;
+    }
+
+    .#{$namespace}-tabs__content {
+      flex: 1;
+      padding: 0 16px;
+    }
+  }
+
+  @include m(left) {
+    .#{$namespace}-tabs__header {
+      border-right: 2px solid var(--stx-color-border-light);
+    }
+
+    .#{$namespace}-tabs__active-bar {
+      right: 0;
+    }
+  }
+
+  @include m(right) {
+    .#{$namespace}-tabs__header {
+      order: 1;
+      border-left: 2px solid var(--stx-color-border-light);
+    }
+
+    .#{$namespace}-tabs__active-bar {
+      left: 0;
+    }
+  }
+
+  // Stretch
+  @include when(stretch) {
+    .#{$namespace}-tabs__item {
+      flex: 1;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}
+
+@include b(tab-pane) {
+  // Tab pane content
+}
