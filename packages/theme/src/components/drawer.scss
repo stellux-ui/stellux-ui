@@ -1,0 +1,156 @@
+@use '../mixins/bem' as *;
+
+@include b(drawer) {
+  position: fixed;
+  background: var(--stx-color-bg);
+  box-shadow: var(--stx-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+  outline: none;
+
+  @include m(rtl) {
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  @include m(ltr) {
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  @include m(ttb) {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @include m(btt) {
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @include e(overlay-wrapper) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  @include e(header) {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--stx-color-border);
+    flex-shrink: 0;
+  }
+
+  @include e(title) {
+    font-size: var(--stx-font-size-md);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--stx-color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @include e(body) {
+    padding: 20px;
+    overflow: auto;
+    flex: 1;
+    color: var(--stx-color-text-regular);
+    font-size: var(--stx-font-size-base);
+    line-height: 1.6;
+  }
+
+  @include e(footer) {
+    padding: 12px 20px;
+    text-align: right;
+    border-top: 1px solid var(--stx-color-border);
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  @include e(close) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    border-radius: var(--stx-radius-sm);
+    cursor: pointer;
+    color: var(--stx-color-text-secondary);
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: color var(--stx-transition-duration) var(--stx-transition-timing),
+                background-color var(--stx-transition-duration) var(--stx-transition-timing);
+    outline: none;
+
+    &:hover {
+      color: var(--stx-color-text-primary);
+      background-color: var(--stx-color-border-light);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--stx-color-primary);
+      outline-offset: -2px;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+// Drawer slide transitions
+.stx-drawer-rtl-enter-active,
+.stx-drawer-rtl-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.stx-drawer-rtl-enter-from,
+.stx-drawer-rtl-leave-to {
+  transform: translateX(100%);
+}
+
+.stx-drawer-ltr-enter-active,
+.stx-drawer-ltr-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.stx-drawer-ltr-enter-from,
+.stx-drawer-ltr-leave-to {
+  transform: translateX(-100%);
+}
+
+.stx-drawer-ttb-enter-active,
+.stx-drawer-ttb-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.stx-drawer-ttb-enter-from,
+.stx-drawer-ttb-leave-to {
+  transform: translateY(-100%);
+}
+
+.stx-drawer-btt-enter-active,
+.stx-drawer-btt-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.stx-drawer-btt-enter-from,
+.stx-drawer-btt-leave-to {
+  transform: translateY(100%);
+}

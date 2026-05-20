@@ -89,7 +89,7 @@ pnpm add stellux-ui
 ### Feedback
 
 - [x] Dialog
-- [ ] Drawer
+- [x] Drawer
 - [ ] Message
 - [ ] MessageBox
 - [ ] Notification
