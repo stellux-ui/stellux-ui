@@ -78,7 +78,7 @@ pnpm add stellux-ui
 
 - [x] Menu
 - [x] Tabs
-- [ ] Breadcrumb
+- [x] Breadcrumb
 - [ ] Dropdown
 - [ ] PageHeader
 - [ ] Steps
