@@ -1,0 +1,60 @@
+@use '../mixins/bem' as *;
+
+@include b(result) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  box-sizing: border-box;
+
+  @include e(icon) {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 64px;
+      height: 64px;
+    }
+
+    .stx-result--success {
+      color: var(--stx-color-success, #22c55e);
+    }
+
+    .stx-result--warning {
+      color: var(--stx-color-warning, #f59e0b);
+    }
+
+    .stx-result--info {
+      color: var(--stx-color-info, #0ea5e9);
+    }
+
+    .stx-result--error {
+      color: var(--stx-color-danger, #ef4444);
+    }
+  }
+
+  @include e(title) {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--stx-color-text-primary, #303133);
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  @include e(subtitle) {
+    font-size: 14px;
+    color: var(--stx-color-text-secondary, #909399);
+    margin-bottom: 24px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  @include e(extra) {
+    margin-top: 24px;
+  }
+}

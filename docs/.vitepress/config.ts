@@ -45,6 +45,7 @@ export default defineConfig({
             { text: 'Card', link: '/components/card' },
             { text: 'Avatar', link: '/components/avatar' },
             { text: 'Empty', link: '/components/empty' },
+            { text: 'Result', link: '/components/result' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },
