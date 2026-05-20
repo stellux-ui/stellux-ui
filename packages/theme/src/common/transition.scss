@@ -1,0 +1,72 @@
+// Fade linear
+.stx-fade-in-linear-enter-active,
+.stx-fade-in-linear-leave-active {
+  transition: opacity 0.2s linear;
+}
+
+.stx-fade-in-linear-enter-from,
+.stx-fade-in-linear-leave-to {
+  opacity: 0;
+}
+
+// Fade with scale
+.stx-fade-in-enter-active,
+.stx-fade-in-leave-active {
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.stx-fade-in-enter-from,
+.stx-fade-in-leave-to {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+// Zoom in from top (for dropdowns)
+.stx-zoom-in-top-enter-active,
+.stx-zoom-in-top-leave-active {
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: center top;
+}
+
+.stx-zoom-in-top-enter-from,
+.stx-zoom-in-top-leave-to {
+  opacity: 0;
+  transform: scaleY(0.8);
+}
+
+// Zoom in from bottom
+.stx-zoom-in-bottom-enter-active,
+.stx-zoom-in-bottom-leave-active {
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-origin: center bottom;
+}
+
+.stx-zoom-in-bottom-enter-from,
+.stx-zoom-in-bottom-leave-to {
+  opacity: 0;
+  transform: scaleY(0.8);
+}
+
+// Zoom in from center
+.stx-zoom-in-center-enter-active,
+.stx-zoom-in-center-leave-active {
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.stx-zoom-in-center-enter-from,
+.stx-zoom-in-center-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+
+// Slide down
+.stx-slide-down-enter-active,
+.stx-slide-down-leave-active {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.stx-slide-down-enter-from,
+.stx-slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
