@@ -47,6 +47,7 @@ export default defineConfig({
             { text: 'Tabs', link: '/components/tabs' },
             { text: 'Breadcrumb', link: '/components/breadcrumb' },
             { text: 'Dropdown', link: '/components/dropdown' },
+            { text: 'PageHeader', link: '/components/page-header' },
         ]},
         { text: 'Feedback', items: [            { text: 'Alert', link: '/components/alert' },
             { text: 'Tooltip', link: '/components/tooltip' },
