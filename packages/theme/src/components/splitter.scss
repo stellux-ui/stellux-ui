@@ -1,0 +1,76 @@
+@use '../mixins/bem' as *;
+
+@include b(splitter) {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  @include m(vertical) {
+    flex-direction: column;
+  }
+
+  @include e(panel) {
+    overflow: auto;
+    flex-shrink: 0;
+    flex-grow: 0;
+    box-sizing: border-box;
+  }
+
+  @include e(gutter) {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--stx-color-border-light, #dcdfe6);
+    transition: background-color 0.15s;
+    cursor: col-resize;
+    user-select: none;
+
+    @include when(dragging) {
+      background-color: var(--stx-color-primary, #409eff);
+    }
+
+    &:hover {
+      background-color: var(--stx-color-primary, #409eff);
+    }
+  }
+
+  // Horizontal direction: vertical gutter bars
+  &:not(.#{$B}--vertical) > .#{$B}__gutter {
+    width: 4px;
+    cursor: col-resize;
+  }
+
+  // Vertical direction: horizontal gutter bars
+  @include m(vertical) {
+    > .#{$B}__gutter {
+      height: 4px;
+      cursor: row-resize;
+    }
+  }
+
+  @include e(gutter-icon) {
+    border-radius: 1px;
+    background-color: var(--stx-color-text-placeholder, #a8abb2);
+    transition: background-color 0.15s;
+  }
+
+  // Icon sizing for horizontal splitter (vertical gutter)
+  &:not(.#{$B}--vertical) > .#{$B}__gutter > .#{$B}__gutter-icon {
+    width: 2px;
+    height: 20px;
+  }
+
+  // Icon sizing for vertical splitter (horizontal gutter)
+  &.#{$B}--vertical > .#{$B}__gutter > .#{$B}__gutter-icon {
+    width: 20px;
+    height: 2px;
+  }
+
+  // Gutter icon color on hover / dragging
+  .#{$B}__gutter:hover > .#{$B}__gutter-icon,
+  .#{$B}__gutter.is-dragging > .#{$B}__gutter-icon {
+    background-color: #fff;
+  }
+}
