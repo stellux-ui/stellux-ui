@@ -11,7 +11,7 @@ const emit = defineEmits(backtopEmits)
 const ns = useNamespace('backtop')
 
 const visible = ref(false)
-let scrollContainer: HTMLElement | Window = window
+let scrollContainer: HTMLElement | Window | undefined
 
 function getScrollTarget(): HTMLElement | Window {
   if (props.target) {
@@ -22,8 +22,8 @@ function getScrollTarget(): HTMLElement | Window {
 }
 
 function getScrollTop(): number {
-  if (scrollContainer instanceof Window) {
-    return window.scrollY || document.documentElement.scrollTop
+  if (!scrollContainer || scrollContainer instanceof Window) {
+    return typeof window !== 'undefined' ? (window.scrollY || document.documentElement.scrollTop) : 0
   }
   return scrollContainer.scrollTop
 }
@@ -33,7 +33,7 @@ function handleScroll() {
 }
 
 function handleClick(evt: MouseEvent) {
-  if (scrollContainer instanceof Window) {
+  if (!scrollContainer || scrollContainer instanceof Window) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   } else {
     scrollContainer.scrollTo({ top: 0, behavior: 'smooth' })
@@ -53,7 +53,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  scrollContainer.removeEventListener('scroll', handleScroll)
+  scrollContainer?.removeEventListener('scroll', handleScroll)
 })
 </script>
 

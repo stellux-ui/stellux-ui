@@ -15,7 +15,7 @@ const fixed = ref(false)
 const placeholderStyle = ref<CSSProperties>({})
 const affixStyle = ref<CSSProperties>({})
 
-let scrollContainer: HTMLElement | Window = window
+let scrollContainer: HTMLElement | Window | undefined
 let targetEl: HTMLElement | undefined
 
 function getTargetElement(): HTMLElement | undefined {
@@ -29,8 +29,8 @@ function getScrollContainer(): HTMLElement | Window {
 }
 
 function getScrollTop(): number {
-  if (scrollContainer instanceof Window) {
-    return window.scrollY || document.documentElement.scrollTop
+  if (!scrollContainer || scrollContainer instanceof Window) {
+    return typeof window !== 'undefined' ? (window.scrollY || document.documentElement.scrollTop) : 0
   }
   return scrollContainer.scrollTop
 }
@@ -108,7 +108,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  scrollContainer.removeEventListener('scroll', handleScroll)
+  scrollContainer?.removeEventListener('scroll', handleScroll)
 })
 
 watch(() => [props.offset, props.position, props.target], () => {

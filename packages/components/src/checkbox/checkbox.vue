@@ -17,7 +17,8 @@ const isGroup = computed(() => !!checkboxGroup)
 
 const isChecked = computed(() => {
   if (isGroup.value) {
-    return checkboxGroup!.modelValue.value.includes(props.value)
+    const groupVal = checkboxGroup!.modelValue.value
+    return Array.isArray(groupVal) && groupVal.includes(props.value)
   }
   return props.modelValue === props.trueValue
 })

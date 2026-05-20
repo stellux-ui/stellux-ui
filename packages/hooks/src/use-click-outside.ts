@@ -4,6 +4,8 @@ export function useClickOutside(
   targets: Ref<HTMLElement | undefined> | Ref<HTMLElement | undefined>[],
   handler: (event: PointerEvent) => void,
 ) {
+  if (typeof document === 'undefined') return { stop: () => {} }
+
   const targetRefs = Array.isArray(targets) ? targets : [targets]
 
   const listener = (event: PointerEvent) => {

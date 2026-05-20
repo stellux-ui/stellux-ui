@@ -7,6 +7,8 @@ const FOCUSABLE_SELECTOR = [
 ].join(',')
 
 export function useFocusTrap(containerRef: Ref<HTMLElement | undefined>, active: Ref<boolean>) {
+  if (typeof document === 'undefined') return
+
   let lastFocusedElement: HTMLElement | null = null
 
   const getFocusableElements = () => {

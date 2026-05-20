@@ -15,7 +15,7 @@ const activeHref = ref('')
 const links = ref<string[]>([])
 const markerRef = shallowRef<HTMLElement>()
 const navRef = shallowRef<HTMLElement>()
-let scrollContainer: HTMLElement | Window = window
+let scrollContainer: HTMLElement | Window | undefined
 let isScrolling = false
 
 function getScrollContainer(): HTMLElement | Window {
@@ -27,8 +27,8 @@ function getScrollContainer(): HTMLElement | Window {
 }
 
 function getScrollTop(): number {
-  if (scrollContainer instanceof Window) {
-    return window.scrollY || document.documentElement.scrollTop
+  if (!scrollContainer || scrollContainer instanceof Window) {
+    return typeof window !== 'undefined' ? (window.scrollY || document.documentElement.scrollTop) : 0
   }
   return scrollContainer.scrollTop
 }
@@ -146,7 +146,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  scrollContainer.removeEventListener('scroll', handleScroll)
+  scrollContainer?.removeEventListener('scroll', handleScroll)
 })
 
 defineExpose({ activeHref })

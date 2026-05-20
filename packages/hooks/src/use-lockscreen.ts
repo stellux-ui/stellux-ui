@@ -4,6 +4,8 @@ let lockCount = 0
 let originalOverflow = ''
 
 export function useLockscreen(active: Ref<boolean>) {
+  if (typeof document === 'undefined') return
+
   const lock = () => {
     if (lockCount === 0) {
       originalOverflow = document.body.style.overflow
