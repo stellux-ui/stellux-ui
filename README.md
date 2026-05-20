@@ -69,7 +69,7 @@ pnpm add stellux-ui
 - [x] Skeleton
 - [x] Statistic
 - [x] Segmented
-- [ ] Timeline
+- [x] Timeline
 - [ ] Tree
 - [ ] TreeSelect
 - [ ] InfiniteScroll

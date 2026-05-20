@@ -51,6 +51,7 @@ export default defineConfig({
             { text: 'Collapse', link: '/components/collapse' },
             { text: 'Skeleton', link: '/components/skeleton' },
             { text: 'Segmented', link: '/components/segmented' },
+            { text: 'Timeline', link: '/components/timeline' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },

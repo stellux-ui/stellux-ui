@@ -1,0 +1,138 @@
+@use '../mixins/bem' as *;
+
+@include b(timeline) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--stx-font-size-base);
+}
+
+@include b(timeline-item) {
+  position: relative;
+  padding-bottom: 20px;
+
+  &:last-child {
+    .stx-timeline-item__tail {
+      display: none;
+    }
+  }
+
+  @include e(tail) {
+    position: absolute;
+    left: 5px;
+    top: 0;
+    height: 100%;
+    border-left: 2px solid var(--stx-color-border);
+  }
+
+  @include e(node) {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--stx-color-primary);
+    border: 2px solid var(--stx-color-primary);
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    // Normal size
+    @include m(normal) {
+      width: 12px;
+      height: 12px;
+      left: 0;
+      top: 0;
+    }
+
+    // Large size
+    @include m(large) {
+      width: 16px;
+      height: 16px;
+      left: -2px;
+      top: -1px;
+
+      svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
+
+    // Type colors
+    @include m(primary) {
+      background-color: var(--stx-color-primary);
+      border-color: var(--stx-color-primary);
+    }
+
+    @include m(success) {
+      background-color: var(--stx-color-success);
+      border-color: var(--stx-color-success);
+    }
+
+    @include m(warning) {
+      background-color: var(--stx-color-warning);
+      border-color: var(--stx-color-warning);
+    }
+
+    @include m(danger) {
+      background-color: var(--stx-color-danger);
+      border-color: var(--stx-color-danger);
+    }
+
+    @include m(info) {
+      background-color: var(--stx-color-info);
+      border-color: var(--stx-color-info);
+    }
+
+    // Hollow
+    @include when(hollow) {
+      background-color: transparent;
+    }
+
+    svg {
+      color: #fff;
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  @include e(wrapper) {
+    position: relative;
+    padding-left: 28px;
+    top: -3px;
+  }
+
+  @include e(content) {
+    color: var(--stx-color-text-primary);
+    line-height: 1.5;
+  }
+
+  @include e(timestamp) {
+    color: var(--stx-color-text-secondary);
+    font-size: var(--stx-font-size-xs);
+    line-height: 1;
+
+    @include when(top) {
+      margin-bottom: 8px;
+    }
+
+    @include when(bottom) {
+      margin-top: 8px;
+    }
+  }
+
+  // ---- Center mode ----
+  @include when(center) {
+    .stx-timeline-item__tail {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .stx-timeline-item__node {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .stx-timeline-item__wrapper {
+      padding-left: calc(50% + 20px);
+    }
+  }
+}
