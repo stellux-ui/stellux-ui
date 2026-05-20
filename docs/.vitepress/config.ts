@@ -26,6 +26,7 @@ export default defineConfig({
             { text: 'Icon', link: '/components/icon' },
             { text: 'Link', link: '/components/link' },
             { text: 'Text', link: '/components/text' },
+            { text: 'Divider', link: '/components/divider' },
         ]},
         { text: 'Form', items: [
             { text: 'Input', link: '/components/input' },

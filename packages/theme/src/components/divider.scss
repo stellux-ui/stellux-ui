@@ -1,0 +1,50 @@
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/config' as *;
+
+@include b(divider) {
+  @include m(horizontal) {
+    display: flex;
+    align-items: center;
+    margin: 24px 0;
+    border: 0;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      border-top: 1px var(--border-style, solid) getCssVar('color-border');
+    }
+  }
+
+  @include m(vertical) {
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+    margin: 0 8px;
+    vertical-align: middle;
+    border: 0;
+    border-left: 1px var(--border-style, solid) getCssVar('color-border');
+  }
+
+  @include e(text) {
+    padding: 0 16px;
+    font-size: getCssVar('font-size-base');
+    font-weight: 500;
+    color: getCssVar('color-text-primary');
+    white-space: nowrap;
+  }
+}
+
+// Content position — applied at the block level to control pseudo-element flex
+.#{$namespace}-divider--horizontal:has(.#{$namespace}-divider__text.is-left) {
+  &::before {
+    flex: 0 0 10%;
+  }
+}
+
+.#{$namespace}-divider--horizontal:has(.#{$namespace}-divider__text.is-right) {
+  &::after {
+    flex: 0 0 10%;
+  }
+}
