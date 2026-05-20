@@ -1,0 +1,138 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(tree-select) {
+  display: inline-flex;
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+
+  @include when(disabled) {
+    cursor: not-allowed;
+
+    .#{$namespace}-tree-select__trigger {
+      background-color: var(--stx-color-bg-page);
+      cursor: not-allowed;
+    }
+
+    .#{$namespace}-tree-select__input {
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(trigger) {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 32px;
+    padding: 0 30px 0 12px;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    background-color: var(--stx-color-bg);
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    position: relative;
+
+    &:hover {
+      border-color: var(--stx-color-border-dark);
+    }
+  }
+
+  @include when(focus) {
+    .#{$namespace}-tree-select__trigger {
+      border-color: var(--stx-color-primary);
+      box-shadow: 0 0 0 2px var(--stx-color-primary-soft);
+    }
+  }
+
+  @include e(input) {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--stx-color-text-primary);
+    cursor: inherit;
+    line-height: 30px;
+    padding: 0;
+
+    &::placeholder {
+      color: var(--stx-color-text-placeholder);
+    }
+  }
+
+  @include e(tags) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    padding: 2px 0;
+    margin-right: 4px;
+  }
+
+  @include e(suffix) {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--stx-color-text-placeholder);
+  }
+
+  @include e(arrow) {
+    transition: transform 0.2s;
+
+    @include when(reverse) {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include e(clear) {
+    cursor: pointer;
+    color: var(--stx-color-text-placeholder);
+
+    &:hover {
+      color: var(--stx-color-text-secondary);
+    }
+  }
+
+  @include e(dropdown) {
+    position: absolute;
+    background: var(--stx-color-bg);
+    border: 1px solid var(--stx-color-border-light);
+    border-radius: var(--stx-radius-base);
+    box-shadow: var(--stx-shadow-md);
+    padding: 4px 0;
+    box-sizing: border-box;
+    z-index: 2000;
+  }
+
+  // Size modifiers
+  @include m(small) {
+    .#{$namespace}-tree-select__trigger {
+      min-height: 28px;
+      font-size: 13px;
+    }
+
+    .#{$namespace}-tree-select__input {
+      line-height: 26px;
+      font-size: 13px;
+    }
+  }
+
+  @include m(large) {
+    .#{$namespace}-tree-select__trigger {
+      min-height: 36px;
+      font-size: 15px;
+    }
+
+    .#{$namespace}-tree-select__input {
+      line-height: 34px;
+      font-size: 15px;
+    }
+  }
+}
