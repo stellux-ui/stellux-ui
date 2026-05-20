@@ -1,0 +1,227 @@
+@use '../mixins/bem' as *;
+
+@include b(progress) {
+  position: relative;
+  line-height: 1;
+
+  @include m(line) {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  @include m(circle) {
+    display: inline-block;
+  }
+
+  @include m(dashboard) {
+    display: inline-block;
+  }
+
+  // ---- Bar (line type) ----
+  @include e(bar) {
+    flex: 1;
+    box-sizing: border-box;
+    margin-right: -55px;
+    padding-right: 55px;
+  }
+
+  @include e(bar-outer) {
+    width: 100%;
+    border-radius: 100px;
+    background-color: var(--stx-color-border-light);
+    overflow: hidden;
+    position: relative;
+  }
+
+  @include e(bar-inner) {
+    position: relative;
+    height: 100%;
+    border-radius: 100px;
+    background-color: var(--stx-color-primary);
+    transition: width 0.6s ease;
+    text-align: right;
+    line-height: 1;
+    white-space: nowrap;
+
+    &::after {
+      display: inline-block;
+      content: '';
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  @include e(inner-text) {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+    font-size: var(--stx-font-size-xs);
+    padding: 0 6px;
+  }
+
+  // ---- Text (line type outside) ----
+  @include e(text) {
+    font-size: var(--stx-font-size-sm);
+    color: var(--stx-color-text-regular);
+    margin-left: 10px;
+    min-width: 50px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @include e(icon) {
+    width: 16px;
+    height: 16px;
+  }
+
+  // ---- Circle / Dashboard ----
+  @include e(circle) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      transform: rotate(-90deg);
+    }
+
+    .stx-progress__text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin-left: 0;
+      min-width: auto;
+      text-align: center;
+    }
+  }
+
+  @include e(circle-track) {
+    stroke: var(--stx-color-border-light);
+  }
+
+  @include e(circle-path) {
+    stroke: var(--stx-color-primary);
+    transition: stroke-dashoffset 0.6s ease;
+  }
+
+  // ---- Status colors ----
+  @include m(success) {
+    .stx-progress__bar-inner {
+      background-color: var(--stx-color-success);
+    }
+
+    .stx-progress__circle-path {
+      stroke: var(--stx-color-success);
+    }
+
+    .stx-progress__text {
+      color: var(--stx-color-success);
+    }
+  }
+
+  @include m(warning) {
+    .stx-progress__bar-inner {
+      background-color: var(--stx-color-warning);
+    }
+
+    .stx-progress__circle-path {
+      stroke: var(--stx-color-warning);
+    }
+
+    .stx-progress__text {
+      color: var(--stx-color-warning);
+    }
+  }
+
+  @include m(exception) {
+    .stx-progress__bar-inner {
+      background-color: var(--stx-color-danger);
+    }
+
+    .stx-progress__circle-path {
+      stroke: var(--stx-color-danger);
+    }
+
+    .stx-progress__text {
+      color: var(--stx-color-danger);
+    }
+  }
+
+  // ---- Text inside ----
+  @include when(text-inside) {
+    .stx-progress__bar {
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+
+  // ---- Indeterminate ----
+  @include when(indeterminate) {
+    .stx-progress__bar-inner {
+      &.is-indeterminate {
+        width: 50% !important;
+        animation: stx-progress-indeterminate 3s infinite ease-in-out;
+      }
+    }
+  }
+
+  // ---- Striped ----
+  @include when(striped) {
+    .stx-progress__bar-inner {
+      &.is-striped {
+        background-image: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.15) 25%,
+          transparent 25%,
+          transparent 50%,
+          rgba(255, 255, 255, 0.15) 50%,
+          rgba(255, 255, 255, 0.15) 75%,
+          transparent 75%,
+          transparent
+        );
+        background-size: 1.25em 1.25em;
+      }
+    }
+  }
+
+  // ---- Striped flow ----
+  @include when(striped-flow) {
+    .stx-progress__bar-inner {
+      &.is-striped-flow {
+        background-image: linear-gradient(
+          45deg,
+          rgba(255, 255, 255, 0.15) 25%,
+          transparent 25%,
+          transparent 50%,
+          rgba(255, 255, 255, 0.15) 50%,
+          rgba(255, 255, 255, 0.15) 75%,
+          transparent 75%,
+          transparent
+        );
+        background-size: 1.25em 1.25em;
+        animation: stx-progress-striped-flow 3s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes stx-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+@keyframes stx-progress-striped-flow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 2.5em 0;
+  }
+}

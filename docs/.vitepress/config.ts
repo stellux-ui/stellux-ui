@@ -46,6 +46,7 @@ export default defineConfig({
             { text: 'Avatar', link: '/components/avatar' },
             { text: 'Empty', link: '/components/empty' },
             { text: 'Result', link: '/components/result' },
+            { text: 'Progress', link: '/components/progress' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },
