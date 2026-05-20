@@ -1,0 +1,145 @@
+@use '../mixins/bem' as *;
+
+@include b(tour) {
+  position: absolute;
+  background-color: var(--stx-color-bg);
+  border-radius: var(--stx-radius-base);
+  box-shadow: var(--stx-shadow-lg);
+  padding: 16px;
+  min-width: 300px;
+  max-width: 520px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--stx-color-text-primary);
+
+  @include m(primary) {
+    background-color: var(--stx-color-primary);
+    color: #fff;
+
+    .stx-tour__title {
+      color: #fff;
+    }
+
+    .stx-tour__body {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .stx-tour__close {
+      color: rgba(255, 255, 255, 0.65);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    .stx-tour__indicator {
+      background-color: rgba(255, 255, 255, 0.35);
+
+      &.is-active {
+        background-color: #fff;
+      }
+    }
+
+    .stx-tour__arrow {
+      background-color: var(--stx-color-primary);
+    }
+  }
+
+  @include e(mask) {
+    position: fixed;
+    inset: 0;
+    pointer-events: auto;
+  }
+
+  @include e(hole) {
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  @include e(arrow) {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: inherit;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+
+  @include e(close) {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--stx-color-text-secondary);
+    border-radius: var(--stx-radius-sm);
+    transition: color 0.15s ease, background-color 0.15s ease;
+
+    &:hover {
+      color: var(--stx-color-text-primary);
+      background-color: var(--stx-color-bg-page);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  @include e(header) {
+    margin-bottom: 8px;
+    padding-right: 24px;
+  }
+
+  @include e(title) {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--stx-color-text-primary);
+  }
+
+  @include e(body) {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--stx-color-text-regular);
+  }
+
+  @include e(footer) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include e(indicators) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  @include e(indicator) {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--stx-color-border);
+    transition: background-color 0.2s ease;
+
+    @include when(active) {
+      background-color: var(--stx-color-primary);
+    }
+  }
+
+  @include e(actions) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

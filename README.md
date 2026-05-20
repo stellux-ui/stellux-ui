@@ -103,7 +103,7 @@ pnpm add stellux-ui
 
 - [x] Overlay
 - [x] CollapseTransition
-- [ ] Tour
+- [x] Tour
 - [ ] Watermark
 
 ### Layout
