@@ -1,0 +1,180 @@
+@use 'sass:map';
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/_var' as *;
+@use '../common/var';
+
+$checkbox: () !default;
+$checkbox: map.merge(
+  (
+    'font-size': getCssVar('font-size-base'),
+    'text-color': getCssVar('color-text-regular'),
+    'input-size': 16px,
+    'input-border-color': getCssVar('color-border-dark'),
+    'input-bg': getCssVar('color-bg'),
+    'input-border-radius': 3px,
+    'checked-color': getCssVar('color-primary'),
+    'disabled-text': getCssVar('color-text-disabled'),
+    'disabled-border': getCssVar('color-border'),
+    'disabled-bg': getCssVar('color-bg-page'),
+  ),
+  $checkbox,
+);
+
+@include b(checkbox) {
+  @include set-component-css-var('checkbox', $checkbox);
+
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: getCssVar('checkbox', 'font-size');
+  color: getCssVar('checkbox', 'text-color');
+  margin-right: 24px;
+  user-select: none;
+  white-space: nowrap;
+  outline: none;
+  position: relative;
+  line-height: 1;
+
+  @include m(small) {
+    --stx-checkbox-font-size: #{getCssVar('font-size-sm')};
+    --stx-checkbox-input-size: 14px;
+  }
+
+  @include m(large) {
+    --stx-checkbox-font-size: #{getCssVar('font-size-md')};
+    --stx-checkbox-input-size: 18px;
+  }
+
+  @include when(bordered) {
+    border: 1px solid getCssVar('color-border');
+    border-radius: getCssVar('radius-base');
+    padding: 6px 16px 6px 12px;
+    transition: border-color 0.15s ease;
+
+    &.is-checked {
+      border-color: getCssVar('checkbox', 'checked-color');
+    }
+
+    &.is-disabled {
+      border-color: getCssVar('color-border');
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    color: getCssVar('checkbox', 'disabled-text');
+  }
+
+  @include when(checked) {
+    .stx-checkbox__inner {
+      border-color: getCssVar('checkbox', 'checked-color');
+      background-color: getCssVar('checkbox', 'checked-color');
+
+      &::after {
+        transform: rotate(45deg) scale(1);
+        opacity: 1;
+      }
+    }
+  }
+
+  @include when(indeterminate) {
+    .stx-checkbox__inner {
+      border-color: getCssVar('checkbox', 'checked-color');
+      background-color: getCssVar('checkbox', 'checked-color');
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60%;
+        height: 2px;
+        background-color: #fff;
+        border: none;
+        border-radius: 1px;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+  }
+
+  @include e(input) {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  @include e(original) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    outline: none;
+    border: none;
+    z-index: -1;
+  }
+
+  @include e(inner) {
+    display: inline-block;
+    width: getCssVar('checkbox', 'input-size');
+    height: getCssVar('checkbox', 'input-size');
+    border: 1px solid getCssVar('checkbox', 'input-border-color');
+    border-radius: getCssVar('checkbox', 'input-border-radius');
+    background-color: getCssVar('checkbox', 'input-bg');
+    box-sizing: border-box;
+    position: relative;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #fff;
+      border-left: 0;
+      border-top: 0;
+      transform: rotate(45deg) scale(0);
+      opacity: 0;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      box-sizing: content-box;
+    }
+  }
+
+  @include e(label) {
+    padding-left: 8px;
+    font-size: getCssVar('checkbox', 'font-size');
+    line-height: 1;
+  }
+
+  // Disabled states
+  &.is-disabled {
+    .stx-checkbox__inner {
+      border-color: getCssVar('checkbox', 'disabled-border');
+      background-color: getCssVar('checkbox', 'disabled-bg');
+    }
+
+    &.is-checked .stx-checkbox__inner {
+      border-color: getCssVar('checkbox', 'disabled-border');
+      background-color: getCssVar('checkbox', 'disabled-bg');
+
+      &::after {
+        border-color: getCssVar('checkbox', 'disabled-text');
+      }
+    }
+
+    &.is-indeterminate .stx-checkbox__inner {
+      border-color: getCssVar('checkbox', 'disabled-border');
+      background-color: getCssVar('checkbox', 'disabled-bg');
+
+      &::after {
+        background-color: getCssVar('checkbox', 'disabled-text');
+      }
+    }
+  }
+}
