@@ -1,0 +1,130 @@
+@use '../mixins/bem' as *;
+
+@include b(message) {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  min-width: 380px;
+  max-width: 560px;
+  padding: 12px 20px;
+  border-radius: var(--stx-radius-base);
+  background-color: var(--stx-color-bg);
+  box-shadow: var(--stx-shadow-md);
+  border: 1px solid var(--stx-color-border-light);
+  border-left: 3px solid var(--stx-color-info);
+  box-sizing: border-box;
+  transition: top 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: all;
+
+  // ---- Type modifiers ----
+  @include m(success) {
+    border-left-color: var(--stx-color-success);
+
+    .stx-message__icon {
+      color: var(--stx-color-success);
+    }
+  }
+
+  @include m(warning) {
+    border-left-color: var(--stx-color-warning);
+
+    .stx-message__icon {
+      color: var(--stx-color-warning);
+    }
+  }
+
+  @include m(info) {
+    border-left-color: var(--stx-color-info);
+
+    .stx-message__icon {
+      color: var(--stx-color-info);
+    }
+  }
+
+  @include m(error) {
+    border-left-color: var(--stx-color-danger);
+
+    .stx-message__icon {
+      color: var(--stx-color-danger);
+    }
+  }
+
+  // ---- States ----
+  @include when(center) {
+    justify-content: center;
+  }
+
+  @include when(closable) {
+    padding-right: 40px;
+  }
+
+  // ---- Elements ----
+  @include e(icon) {
+    flex-shrink: 0;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @include e(content) {
+    font-size: var(--stx-font-size-base);
+    color: var(--stx-color-text-regular);
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  @include e(close) {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stx-color-text-placeholder);
+    transition: color 0.15s ease;
+    outline: none;
+
+    &:hover {
+      color: var(--stx-color-text-primary);
+    }
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+// ---- Transition: slide down + fade ----
+.stx-message-fade-enter-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.stx-message-fade-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.stx-message-fade-enter-from {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.stx-message-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+}
