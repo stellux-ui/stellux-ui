@@ -66,7 +66,7 @@ pnpm add stellux-ui
 - [ ] Pagination
 - [x] Progress
 - [x] Result
-- [ ] Skeleton
+- [x] Skeleton
 - [x] Statistic
 - [ ] Segmented
 - [ ] Timeline

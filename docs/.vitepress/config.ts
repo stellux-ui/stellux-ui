@@ -49,6 +49,7 @@ export default defineConfig({
             { text: 'Progress', link: '/components/progress' },
             { text: 'Statistic', link: '/components/statistic' },
             { text: 'Collapse', link: '/components/collapse' },
+            { text: 'Skeleton', link: '/components/skeleton' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },

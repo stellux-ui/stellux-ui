@@ -1,0 +1,107 @@
+@use '../mixins/bem' as *;
+
+@keyframes stx-skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@include b(skeleton) {
+  @include when(animated) {
+    .stx-skeleton-item {
+      background: linear-gradient(
+        90deg,
+        var(--stx-color-bg-page) 25%,
+        #e2e8f0 37%,
+        var(--stx-color-bg-page) 63%
+      );
+      background-size: 400px 100%;
+      animation: stx-skeleton-loading 1.4s ease infinite;
+    }
+  }
+}
+
+@include b(skeleton-item) {
+  background-color: var(--stx-color-bg-page);
+  border-radius: var(--stx-radius-sm);
+
+  @include m(text) {
+    height: 16px;
+    width: 100%;
+    margin-bottom: 12px;
+
+    &:last-child {
+      width: 60%;
+    }
+  }
+
+  @include m(p) {
+    height: 16px;
+    width: 100%;
+    margin-bottom: 12px;
+
+    &:last-child {
+      width: 60%;
+    }
+  }
+
+  @include m(h1) {
+    height: 22px;
+    width: 40%;
+    margin-bottom: 16px;
+  }
+
+  @include m(h3) {
+    height: 18px;
+    width: 50%;
+    margin-bottom: 14px;
+  }
+
+  @include m(caption) {
+    height: 12px;
+    width: 30%;
+  }
+
+  @include m(circle) {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  @include m(rect) {
+    width: 100%;
+    height: 100px;
+  }
+
+  @include m(image) {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      background: currentColor;
+      opacity: 0.12;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'/%3E%3Cpath d='M21 15l-5-5L5 21'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'/%3E%3Cpath d='M21 15l-5-5L5 21'/%3E%3C/svg%3E");
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+    }
+  }
+
+  @include m(button) {
+    width: 80px;
+    height: 32px;
+    border-radius: var(--stx-radius-base);
+  }
+}
