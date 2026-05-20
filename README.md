@@ -32,7 +32,7 @@ pnpm add stellux-ui
 
 - [x] Input
 - [x] InputNumber
-- [ ] InputTag
+- [x] InputTag
 - [ ] InputOTP
 - [x] Select
 - [x] Radio
