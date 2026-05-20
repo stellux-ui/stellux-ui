@@ -1,0 +1,232 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(color-picker) {
+  display: inline-flex;
+  position: relative;
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .#{$namespace}-color-picker__trigger {
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(trigger) {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    background-color: var(--stx-color-bg);
+    cursor: pointer;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: var(--stx-color-border-dark);
+    }
+  }
+
+  @include e(color) {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+    border: 1px solid var(--stx-color-border-light);
+    overflow: hidden;
+    // Checkerboard background for transparency
+    background-image:
+      linear-gradient(45deg, #ccc 25%, transparent 25%),
+      linear-gradient(-45deg, #ccc 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #ccc 75%),
+      linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+  }
+
+  @include e(color-inner) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(icon) {
+    color: var(--stx-color-text-placeholder);
+    transition: transform 0.2s;
+  }
+
+  @include e(panel) {
+    background: var(--stx-color-bg);
+    border: 1px solid var(--stx-color-border-light);
+    border-radius: var(--stx-radius-base);
+    box-shadow: var(--stx-shadow-md);
+    padding: 12px;
+    width: 280px;
+    box-sizing: border-box;
+  }
+
+  @include e(sv-panel) {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    cursor: crosshair;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  @include e(sv-white) {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #fff, transparent);
+  }
+
+  @include e(sv-black) {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, #000);
+  }
+
+  @include e(sv-pointer) {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  @include e(bar-wrap) {
+    margin-top: 10px;
+  }
+
+  @include e(hue-bar) {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    background: linear-gradient(
+      to right,
+      #f00 0%,
+      #ff0 16.66%,
+      #0f0 33.33%,
+      #0ff 50%,
+      #00f 66.66%,
+      #f0f 83.33%,
+      #f00 100%
+    );
+  }
+
+  @include e(alpha-bar) {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    // Checkerboard background
+    background-image:
+      linear-gradient(45deg, #ccc 25%, transparent 25%),
+      linear-gradient(-45deg, #ccc 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #ccc 75%),
+      linear-gradient(-45deg, transparent 75%, #ccc 75%);
+    background-size: 8px 8px;
+    background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+  }
+
+  @include e(alpha-gradient) {
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+  }
+
+  @include e(bar-slider) {
+    position: absolute;
+    top: -1px;
+    width: 4px;
+    height: calc(100% + 2px);
+    background: #fff;
+    border: 1px solid var(--stx-color-border-dark);
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  @include e(input-wrap) {
+    margin-top: 10px;
+  }
+
+  @include e(hex-input) {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    font-size: 12px;
+    font-family: monospace;
+    color: var(--stx-color-text-primary);
+    background: var(--stx-color-bg);
+    outline: none;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: var(--stx-color-primary);
+    }
+  }
+
+  @include e(predefine) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  @include e(predefine-color) {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid var(--stx-color-border-light);
+    transition: transform 0.15s, box-shadow 0.15s;
+
+    &:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  @include e(buttons) {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  // Sizes
+  @include m(small) {
+    .#{$namespace}-color-picker__trigger {
+      padding: 3px;
+    }
+
+    .#{$namespace}-color-picker__color {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @include m(large) {
+    .#{$namespace}-color-picker__trigger {
+      padding: 5px;
+    }
+
+    .#{$namespace}-color-picker__color {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
