@@ -1,0 +1,83 @@
+@use '../mixins/bem' as *;
+
+@include b(anchor) {
+  position: relative;
+
+  @include m(vertical) {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2px;
+
+    .stx-anchor__marker {
+      position: absolute;
+      left: 0;
+      width: 3px;
+      border-radius: 2px;
+      background: var(--stx-color-primary);
+      transition: top 0.25s ease, height 0.25s ease, opacity 0.2s ease;
+      opacity: 0;
+    }
+
+    .stx-anchor-link {
+      padding-left: 14px;
+    }
+  }
+
+  @include m(horizontal) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid var(--stx-color-border-lighter);
+
+    .stx-anchor__marker {
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      border-radius: 1px;
+      background: var(--stx-color-primary);
+      transition: left 0.25s ease, width 0.25s ease, opacity 0.2s ease;
+      opacity: 0;
+    }
+
+    .stx-anchor-link {
+      padding: 8px 16px;
+    }
+  }
+
+  @include m(underline) {
+    .stx-anchor-link {
+      @include when(active) {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+
+  @include e(marker) {
+    pointer-events: none;
+  }
+}
+
+@include b(anchor-link) {
+  display: block;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 4px 0;
+  color: var(--stx-color-text-regular);
+  transition: color 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--stx-color-primary);
+  }
+
+  @include when(active) {
+    color: var(--stx-color-primary);
+    font-weight: 500;
+  }
+
+  @include e(sub) {
+    padding-left: 12px;
+  }
+}

@@ -84,7 +84,7 @@ pnpm add stellux-ui
 - [x] Steps
 - [x] Affix
 - [x] Backtop
-- [ ] Anchor
+- [x] Anchor
 
 ### Feedback
 

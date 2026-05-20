@@ -51,6 +51,7 @@ export default defineConfig({
             { text: 'Steps', link: '/components/steps' },
             { text: 'Affix', link: '/components/affix' },
             { text: 'Backtop', link: '/components/backtop' },
+            { text: 'Anchor', link: '/components/anchor' },
         ]},
         { text: 'Feedback', items: [            { text: 'Alert', link: '/components/alert' },
             { text: 'Tooltip', link: '/components/tooltip' },
