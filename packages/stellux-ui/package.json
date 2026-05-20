@@ -1,6 +1,6 @@
 {
   "name": "stellux-ui",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "Stellux UI - A Vue 3 component library with high freedom, high inclusivity, and high performance",
   "main": "dist/stellux-ui.umd.js",
   "module": "dist/stellux-ui.es.js",

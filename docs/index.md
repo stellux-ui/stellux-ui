@@ -19,8 +19,8 @@ hero:
 features:
   - title: Component-Level Theming
     details: Every component exposes CSS variables for deep customization without fighting specificity.
-  - title: Element Plus Compatible
-    details: Familiar API design inspired by Element Plus — easy migration, minimal learning curve.
+  - title: Developer Friendly
+    details: Intuitive API design with full TypeScript support — minimal learning curve, maximum productivity.
   - title: Tree-Shakable
     details: Import only what you use. Each component is independently bundled for minimal footprint.
   - title: Built-in Dark Mode

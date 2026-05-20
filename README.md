@@ -7,6 +7,16 @@
 
 A Vue 3 component library built around three principles: **High Freedom**, **High Inclusivity**, and **High Performance**.
 
+## Features
+
+- 75+ components covering all common UI scenarios
+- CSS Variables theming with built-in dark mode
+- Full TypeScript support with type-safe props
+- Tree-shakable — import only what you use
+- BEM naming convention with `stx-` prefix
+- WAI-ARIA accessible components
+- pnpm monorepo architecture
+
 ## Install
 
 ```bash
@@ -15,105 +25,24 @@ npm install stellux-ui
 pnpm add stellux-ui
 ```
 
-## Component Progress
+## Quick Start
 
-### Basic
+```typescript
+import { createApp } from 'vue'
+import SteluxUI from 'stellux-ui'
+import App from './App.vue'
 
-- [x] Button
-- [x] Icon
-- [x] Link
-- [x] Text
-- [x] Scrollbar
-- [x] Space
-- [x] Divider
-- [x] Splitter
+createApp(App).use(SteluxUI).mount('#app')
+```
 
-### Form
+## Development
 
-- [x] Input
-- [x] InputNumber
-- [x] InputTag
-- [x] InputOTP
-- [x] Select
-- [x] Radio
-- [x] Checkbox
-- [x] Switch
-- [x] Slider
-- [x] Rate
-- [x] ColorPicker
-- [x] DatePicker
-- [x] TimePicker
-- [x] Upload
-- [x] Transfer
-- [x] Cascader
-- [x] Autocomplete
-- [x] Mention
-- [x] Form
-
-### Data Display
-
-- [x] Table
-- [x] Tag
-- [x] Badge
-- [x] Avatar
-- [x] Card
-- [x] Carousel
-- [x] Calendar
-- [x] Collapse
-- [x] Descriptions
-- [x] Empty
-- [x] Image
-- [x] Pagination
-- [x] Progress
-- [x] Result
-- [x] Skeleton
-- [x] Statistic
-- [x] Segmented
-- [x] Timeline
-- [x] Tree
-- [x] TreeSelect
-- [x] InfiniteScroll
-
-### Navigation
-
-- [x] Menu
-- [x] Tabs
-- [x] Breadcrumb
-- [x] Dropdown
-- [x] PageHeader
-- [x] Steps
-- [x] Affix
-- [x] Backtop
-- [x] Anchor
-
-### Feedback
-
-- [x] Dialog
-- [x] Drawer
-- [x] Message
-- [x] MessageBox
-- [x] Notification
-- [x] Tooltip
-- [x] Popover
-- [x] Popconfirm
-- [x] Loading
-- [x] Alert
-
-### Other
-
-- [x] Overlay
-- [x] CollapseTransition
-- [x] Tour
-- [x] Watermark
-
-### Layout
-
-- [x] Container / Header / Footer / Aside / Main
-- [x] Row / Col
-
-### Directives
-
-- [x] v-ripple
+```bash
+pnpm install
+pnpm dev
+pnpm docs:dev
+pnpm build
+```
 
 ## Contributing
 
