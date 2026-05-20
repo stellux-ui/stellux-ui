@@ -1,0 +1,80 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(scrollbar) {
+  overflow: hidden;
+  position: relative;
+
+  @include e(wrap) {
+    overflow: auto;
+    height: 100%;
+  }
+
+  // Element-modifier: stx-scrollbar__wrap--hidden-default
+  // Hides the native scrollbar while keeping scroll functionality
+  .#{$namespace}-scrollbar__wrap--hidden-default {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @include e(view) {
+    // View container — no additional styles needed by default
+  }
+
+  @include e(bar) {
+    position: absolute;
+    z-index: 1;
+    border-radius: 4px;
+
+    @include when(vertical) {
+      top: 2px;
+      right: 2px;
+      bottom: 2px;
+      width: 6px;
+    }
+
+    @include when(horizontal) {
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      height: 6px;
+    }
+  }
+
+  @include e(thumb) {
+    position: relative;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  // Thumb sizing within vertical bar
+  .#{$namespace}-scrollbar__bar.is-vertical .#{$namespace}-scrollbar__thumb {
+    width: 100%;
+  }
+
+  // Thumb sizing within horizontal bar
+  .#{$namespace}-scrollbar__bar.is-horizontal .#{$namespace}-scrollbar__thumb {
+    height: 100%;
+  }
+}
+
+// Dark mode
+[data-theme='dark'],
+.dark {
+  .#{$namespace}-scrollbar__thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+  }
+}

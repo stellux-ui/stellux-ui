@@ -28,6 +28,7 @@ export default defineConfig({
             { text: 'Text', link: '/components/text' },
             { text: 'Divider', link: '/components/divider' },
             { text: 'Space', link: '/components/space' },
+            { text: 'Scrollbar', link: '/components/scrollbar' },
         ]},
         { text: 'Form', items: [
             { text: 'Input', link: '/components/input' },
