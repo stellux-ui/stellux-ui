@@ -91,6 +91,7 @@ export default defineConfig({
         { text: 'Other', items: [            { text: 'Overlay', link: '/components/overlay' },
             { text: 'CollapseTransition', link: '/components/collapse-transition' },
             { text: 'Tour', link: '/components/tour' },
+            { text: 'Watermark', link: '/components/watermark' },
         ]},
       ]
     },
