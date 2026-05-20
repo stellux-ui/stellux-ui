@@ -1,0 +1,42 @@
+@use '../mixins/bem' as *;
+
+@include b(popover) {
+  position: absolute;
+  background: var(--stx-color-bg);
+  color: var(--stx-color-text-primary);
+  border: 1px solid var(--stx-color-border);
+  border-radius: var(--stx-radius-base);
+  box-shadow: var(--stx-shadow-md);
+  padding: 12px;
+  box-sizing: border-box;
+  z-index: 2000;
+  font-size: 14px;
+  line-height: 1.5;
+
+  @include e(trigger) {
+    display: inline-flex;
+  }
+
+  @include e(title) {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--stx-color-text-primary);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  @include e(body) {
+    font-size: 13px;
+    color: var(--stx-color-text-regular);
+  }
+
+  @include e(arrow) {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+    border: inherit;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+}
