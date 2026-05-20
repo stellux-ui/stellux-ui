@@ -1,0 +1,74 @@
+@use '../mixins/bem' as *;
+
+@include b(loading) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: opacity 0.3s ease;
+
+  @include when(fullscreen) {
+    position: fixed;
+  }
+
+  @include e(spinner) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--stx-color-primary);
+  }
+
+  @include e(circular) {
+    width: 42px;
+    height: 42px;
+    animation: stx-loading-rotate 2s linear infinite;
+  }
+
+  @include e(path) {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: stx-loading-dash 1.5s ease-in-out infinite;
+  }
+
+  @include e(text) {
+    margin-top: 8px;
+    font-size: var(--stx-font-size-sm);
+    color: var(--stx-color-primary);
+    line-height: 1.4;
+  }
+}
+
+// Dark theme override for loading background
+[data-theme='dark'] .stx-loading,
+.dark .stx-loading {
+  background-color: rgba(15, 23, 42, 0.7);
+}
+
+@keyframes stx-loading-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stx-loading-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -40px;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -120px;
+  }
+}
