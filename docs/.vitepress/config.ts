@@ -48,6 +48,7 @@ export default defineConfig({
             { text: 'Result', link: '/components/result' },
             { text: 'Progress', link: '/components/progress' },
             { text: 'Statistic', link: '/components/statistic' },
+            { text: 'Collapse', link: '/components/collapse' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },
