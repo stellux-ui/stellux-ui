@@ -1,0 +1,122 @@
+@use 'sass:map';
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/_var' as *;
+@use '../common/var';
+
+// ---- Form ----
+@include b(form) {
+  font-family: getCssVar('font-family');
+
+  @include m(top) {
+    .stx-form-item {
+      display: block;
+    }
+
+    .stx-form-item__label {
+      display: block;
+      text-align: left;
+      padding-right: 0;
+      padding-bottom: 8px;
+      line-height: 1.5;
+    }
+  }
+
+  @include m(left) {
+    .stx-form-item__label {
+      text-align: left;
+    }
+  }
+
+  @include when(inline) {
+    display: flex;
+    flex-wrap: wrap;
+
+    .stx-form-item {
+      display: inline-flex;
+      margin-right: 16px;
+    }
+  }
+}
+
+// ---- FormItem ----
+@include b(form-item) {
+  display: flex;
+  margin-bottom: 22px;
+
+  @include m(small) {
+    .stx-form-item__label,
+    .stx-form-item__content {
+      font-size: getCssVar('font-size-sm');
+      line-height: 28px;
+    }
+  }
+
+  @include m(large) {
+    .stx-form-item__label,
+    .stx-form-item__content {
+      font-size: getCssVar('font-size-md');
+      line-height: 40px;
+    }
+  }
+
+  @include e(label) {
+    flex-shrink: 0;
+    text-align: right;
+    padding-right: 12px;
+    font-size: getCssVar('font-size-base');
+    color: getCssVar('color-text-regular');
+    line-height: 32px;
+    box-sizing: border-box;
+  }
+
+  @include e(content) {
+    flex: 1;
+    position: relative;
+    font-size: getCssVar('font-size-base');
+    line-height: 32px;
+    min-width: 0;
+  }
+
+  @include e(error) {
+    color: getCssVar('color-danger');
+    font-size: getCssVar('font-size-xs');
+    line-height: 1;
+    padding-top: 4px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+
+    @include m(inline) {
+      position: relative;
+      top: auto;
+      left: auto;
+      display: inline-block;
+      margin-left: 8px;
+    }
+  }
+
+  @include e(required-asterisk) {
+    color: getCssVar('color-danger');
+    margin-right: 4px;
+    font-weight: bold;
+  }
+
+  @include when(required) {
+    > .stx-form-item__label {
+      &::before {
+        display: inline;
+      }
+    }
+  }
+
+  @include when(error) {
+    .stx-input__wrapper {
+      border-color: getCssVar('color-danger');
+    }
+
+    .stx-textarea__inner {
+      border-color: getCssVar('color-danger');
+    }
+  }
+}
