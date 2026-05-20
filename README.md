@@ -24,7 +24,7 @@ pnpm add stellux-ui
 - [x] Link
 - [x] Text
 - [ ] Scrollbar
-- [ ] Space
+- [x] Space
 - [x] Divider
 - [ ] Splitter
 

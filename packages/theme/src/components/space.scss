@@ -1,0 +1,34 @@
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/config' as *;
+
+@include b(space) {
+  display: inline-flex;
+
+  @include m(horizontal) {
+    flex-direction: row;
+  }
+
+  @include m(vertical) {
+    flex-direction: column;
+  }
+
+  @include when(wrap) {
+    flex-wrap: wrap;
+  }
+
+  @include when(fill) {
+    display: flex;
+  }
+
+  @include e(item) {
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(spacer) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
