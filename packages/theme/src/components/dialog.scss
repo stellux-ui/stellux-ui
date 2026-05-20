@@ -1,0 +1,120 @@
+@use '../mixins/bem' as *;
+
+@include b(dialog) {
+  position: relative;
+  background: var(--stx-color-bg);
+  border-radius: var(--stx-radius-lg);
+  box-shadow: var(--stx-shadow-lg);
+  max-height: calc(100vh - 30px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  @include when(fullscreen) {
+    width: 100% !important;
+    height: 100% !important;
+    margin-top: 0 !important;
+    border-radius: 0;
+    max-height: none;
+  }
+
+  @include when(center) {
+    .stx-dialog__header {
+      text-align: center;
+    }
+
+    .stx-dialog__footer {
+      text-align: center;
+    }
+  }
+
+  @include when(draggable) {
+    .stx-dialog__header {
+      cursor: move;
+      user-select: none;
+    }
+  }
+
+  @include e(overlay-wrapper) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  @include e(header) {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--stx-color-border);
+    flex-shrink: 0;
+  }
+
+  @include e(title) {
+    font-size: var(--stx-font-size-md);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--stx-color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @include e(body) {
+    padding: 20px;
+    overflow: auto;
+    flex: 1;
+    color: var(--stx-color-text-regular);
+    font-size: var(--stx-font-size-base);
+    line-height: 1.6;
+  }
+
+  @include e(footer) {
+    padding: 12px 20px;
+    text-align: right;
+    border-top: 1px solid var(--stx-color-border);
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  @include e(close) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    border-radius: var(--stx-radius-sm);
+    cursor: pointer;
+    color: var(--stx-color-text-secondary);
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: color var(--stx-transition-duration) var(--stx-transition-timing),
+                background-color var(--stx-transition-duration) var(--stx-transition-timing);
+    outline: none;
+
+    &:hover {
+      color: var(--stx-color-text-primary);
+      background-color: var(--stx-color-border-light);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--stx-color-primary);
+      outline-offset: -2px;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
