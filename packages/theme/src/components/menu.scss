@@ -1,0 +1,261 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+// ============ Menu ============
+@include b(menu) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--stx-color-bg);
+  font-size: var(--stx-font-size-base);
+  color: var(--stx-color-text-primary);
+  border-right: 1px solid var(--stx-color-border);
+  box-sizing: border-box;
+  transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+
+  // Vertical mode (default)
+  @include m(vertical) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // Horizontal mode
+  @include m(horizontal) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-right: none;
+    border-bottom: 1px solid var(--stx-color-border);
+  }
+
+  // Collapsed state
+  @include when(collapse) {
+    width: 64px;
+
+    .#{$namespace}-menu-item,
+    .#{$namespace}-sub-menu__title {
+      padding: 0 !important;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .#{$namespace}-menu-item .#{$namespace}-menu-item__content,
+    .#{$namespace}-sub-menu__title span {
+      display: none;
+    }
+
+    .#{$namespace}-sub-menu__arrow {
+      display: none;
+    }
+
+    .#{$namespace}-menu-item-group__title {
+      display: none;
+    }
+  }
+}
+
+// ============ Menu Item ============
+@include b(menu-item) {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 56px;
+  line-height: 56px;
+  color: var(--stx-color-text-regular);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+  box-sizing: border-box;
+
+  &:hover {
+    color: var(--stx-color-primary);
+    background-color: var(--stx-color-primary-soft);
+  }
+
+  @include when(active) {
+    color: var(--stx-color-primary);
+    font-weight: 500;
+  }
+
+  @include when(disabled) {
+    color: var(--stx-color-text-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  @include e(content) {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Horizontal mode overrides
+  .#{$namespace}-menu--horizontal > & {
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: transparent;
+      transition: background-color 0.15s;
+    }
+
+    &.is-active::after {
+      background-color: var(--stx-color-primary);
+    }
+  }
+}
+
+// ============ Menu Item Group ============
+@include b(menu-item-group) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include e(title) {
+    padding: 8px 20px 4px;
+    font-size: var(--stx-font-size-xs);
+    color: var(--stx-color-text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @include e(list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// ============ Sub Menu ============
+@include b(sub-menu) {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  @include e(title) {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 56px;
+    line-height: 56px;
+    color: var(--stx-color-text-regular);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.15s, background-color 0.15s;
+    box-sizing: border-box;
+    position: relative;
+
+    &:hover {
+      color: var(--stx-color-primary);
+      background-color: var(--stx-color-primary-soft);
+    }
+
+    // Horizontal mode
+    .#{$namespace}-menu--horizontal > .#{$namespace}-sub-menu > & {
+      height: 50px;
+      line-height: 50px;
+    }
+  }
+
+  @include e(arrow) {
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+
+    @include when(open) {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include e(list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @include e(popup) {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 4px 0;
+    min-width: 200px;
+    background-color: var(--stx-color-bg);
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    box-shadow: var(--stx-shadow-md);
+    box-sizing: border-box;
+
+    .#{$namespace}-menu-item {
+      height: 40px;
+      line-height: 40px;
+      padding: 0 16px;
+    }
+  }
+
+  @include when(opened) {
+    > .#{$namespace}-sub-menu__title {
+      color: var(--stx-color-text-primary);
+    }
+  }
+
+  @include when(active) {
+    > .#{$namespace}-sub-menu__title {
+      color: var(--stx-color-primary);
+    }
+  }
+
+  @include when(disabled) {
+    > .#{$namespace}-sub-menu__title {
+      color: var(--stx-color-text-disabled);
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  }
+
+  // Horizontal top-level: popup drops below
+  .#{$namespace}-menu--horizontal > & {
+    > .#{$namespace}-sub-menu__popup {
+      top: 100%;
+      left: 0;
+    }
+  }
+
+  // Nested sub-menu popup: opens to the right
+  .#{$namespace}-sub-menu .#{$namespace}-sub-menu__popup & {
+    > .#{$namespace}-sub-menu__popup {
+      top: 0;
+      left: 100%;
+    }
+  }
+}
+
+// ============ Dark mode ============
+[data-theme='dark'],
+.dark {
+  .#{$namespace}-menu {
+    border-color: var(--stx-color-border);
+  }
+
+  .#{$namespace}-sub-menu__popup {
+    background-color: var(--stx-color-bg);
+    border-color: var(--stx-color-border);
+  }
+}
