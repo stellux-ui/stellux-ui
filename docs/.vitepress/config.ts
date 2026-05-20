@@ -37,7 +37,8 @@ export default defineConfig({
             { text: 'Badge', link: '/components/badge' },
         ]},
         { text: 'Navigation', items: [        ]},
-        { text: 'Feedback', items: [        ]},
+        { text: 'Feedback', items: [            { text: 'Alert', link: '/components/alert' },
+        ]},
         { text: 'Other', items: [        ]},
       ]
     },
