@@ -72,6 +72,7 @@ export default defineConfig({
             { text: 'Tree', link: '/components/tree' },
             { text: 'TreeSelect', link: '/components/tree-select' },
             { text: 'Carousel', link: '/components/carousel' },
+            { text: 'Calendar', link: '/components/calendar' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },
