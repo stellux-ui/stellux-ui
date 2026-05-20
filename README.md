@@ -67,7 +67,7 @@ pnpm add stellux-ui
 - [x] Progress
 - [x] Result
 - [ ] Skeleton
-- [ ] Statistic
+- [x] Statistic
 - [ ] Segmented
 - [ ] Timeline
 - [ ] Tree

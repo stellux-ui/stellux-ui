@@ -1,0 +1,33 @@
+@use '../mixins/bem' as *;
+
+@include b(statistic) {
+  @include e(head) {
+    font-size: var(--stx-font-size-base);
+    color: var(--stx-color-text-secondary);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  @include e(content) {
+    display: inline-flex;
+    align-items: baseline;
+    color: var(--stx-color-text-primary);
+  }
+
+  @include e(value) {
+    font-size: 28px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  @include e(prefix) {
+    font-size: var(--stx-font-size-base);
+    margin-right: 4px;
+  }
+
+  @include e(suffix) {
+    font-size: var(--stx-font-size-base);
+    margin-left: 4px;
+  }
+}
