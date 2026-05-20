@@ -1,6 +1,6 @@
 {
   "name": "@stellux/utils",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Utility functions for Stellux UI",
   "main": "src/index.ts",
   "module": "src/index.ts",

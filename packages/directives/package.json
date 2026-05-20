@@ -1,6 +1,6 @@
 {
   "name": "@stellux/directives",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Directives for Stellux UI",
   "main": "src/index.ts",
   "module": "src/index.ts",

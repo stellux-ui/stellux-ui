@@ -1,6 +1,6 @@
 {
   "name": "@stellux/theme",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Theme system for Stellux UI",
   "main": "src/index.scss",
   "files": [
