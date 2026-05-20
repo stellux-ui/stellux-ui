@@ -95,7 +95,7 @@ pnpm add stellux-ui
 - [x] Notification
 - [x] Tooltip
 - [x] Popover
-- [ ] Popconfirm
+- [x] Popconfirm
 - [x] Loading
 - [x] Alert
 

@@ -1,0 +1,109 @@
+@use '../mixins/bem' as *;
+
+@include b(popconfirm) {
+  padding: 4px 0;
+
+  @include e(main) {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  @include e(icon) {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 1px;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  @include e(title) {
+    font-size: var(--stx-font-size-base);
+    color: var(--stx-color-text-primary);
+    line-height: 1.4;
+  }
+
+  @include e(action) {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  @include e(cancel) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 0 10px;
+    font-size: var(--stx-font-size-xs);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-sm);
+    background-color: var(--stx-color-bg);
+    color: var(--stx-color-text-primary);
+    outline: none;
+    transition: border-color 0.15s ease,
+                background-color 0.15s ease,
+                color 0.15s ease;
+
+    &:hover {
+      background-color: var(--stx-color-primary-soft);
+      color: var(--stx-color-primary);
+      border-color: var(--stx-color-primary);
+    }
+
+    &:active {
+      color: var(--stx-color-primary-dark);
+      border-color: var(--stx-color-primary-dark);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--stx-color-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  @include e(confirm) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 0 10px;
+    font-size: var(--stx-font-size-xs);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid var(--stx-color-primary);
+    border-radius: var(--stx-radius-sm);
+    background-color: var(--stx-color-primary);
+    color: #fff;
+    outline: none;
+    transition: border-color 0.15s ease,
+                background-color 0.15s ease;
+
+    &:hover {
+      background-color: var(--stx-color-primary-light);
+      border-color: var(--stx-color-primary-light);
+    }
+
+    &:active {
+      background-color: var(--stx-color-primary-dark);
+      border-color: var(--stx-color-primary-dark);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--stx-color-primary);
+      outline-offset: 2px;
+    }
+  }
+}
