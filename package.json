@@ -1,7 +1,7 @@
 {
   "name": "stellux-ui-monorepo",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Stellux UI - A Vue 3 component library with high freedom, high inclusivity, and high performance",
   "packageManager": "pnpm@10.25.0",
   "engines": {

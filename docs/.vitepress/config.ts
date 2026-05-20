@@ -50,6 +50,7 @@ export default defineConfig({
             { text: 'DatePicker', link: '/components/date-picker' },
             { text: 'InputTag', link: '/components/input-tag' },
             { text: 'InputOTP', link: '/components/input-o-t-p' },
+            { text: 'TimePicker', link: '/components/time-picker' },
         ]},
         { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
             { text: 'Badge', link: '/components/badge' },

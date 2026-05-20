@@ -42,7 +42,7 @@ pnpm add stellux-ui
 - [x] Rate
 - [x] ColorPicker
 - [x] DatePicker
-- [ ] TimePicker
+- [x] TimePicker
 - [x] Upload
 - [x] Transfer
 - [x] Cascader
