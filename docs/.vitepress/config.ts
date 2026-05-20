@@ -40,6 +40,7 @@ export default defineConfig({
             { text: 'InputNumber', link: '/components/input-number' },
             { text: 'Select', link: '/components/select' },
             { text: 'Rate', link: '/components/rate' },
+            { text: 'Slider', link: '/components/slider' },
         ]},
         { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
             { text: 'Badge', link: '/components/badge' },
