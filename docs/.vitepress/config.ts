@@ -53,6 +53,7 @@ export default defineConfig({
             { text: 'Segmented', link: '/components/segmented' },
             { text: 'Timeline', link: '/components/timeline' },
             { text: 'Descriptions', link: '/components/descriptions' },
+            { text: 'InfiniteScroll', link: '/components/infinite-scroll' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },

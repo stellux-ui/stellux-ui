@@ -72,7 +72,7 @@ pnpm add stellux-ui
 - [x] Timeline
 - [ ] Tree
 - [ ] TreeSelect
-- [ ] InfiniteScroll
+- [x] InfiniteScroll
 
 ### Navigation
 
