@@ -1,0 +1,234 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(cascader) {
+  display: inline-flex;
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+
+  @include when(disabled) {
+    cursor: not-allowed;
+
+    .#{$namespace}-cascader__trigger {
+      background-color: var(--stx-color-bg-page);
+      cursor: not-allowed;
+    }
+
+    .#{$namespace}-cascader__input {
+      cursor: not-allowed;
+    }
+  }
+
+  @include when(focus) {
+    .#{$namespace}-cascader__trigger {
+      border-color: var(--stx-color-primary);
+      box-shadow: 0 0 0 2px var(--stx-color-primary-soft);
+    }
+  }
+
+  @include e(trigger) {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 32px;
+    padding: 0 30px 0 12px;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    background-color: var(--stx-color-bg);
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    position: relative;
+
+    &:hover {
+      border-color: var(--stx-color-border-dark);
+    }
+  }
+
+  @include e(input) {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--stx-color-text-primary);
+    cursor: inherit;
+    line-height: 30px;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &::placeholder {
+      color: var(--stx-color-text-placeholder);
+    }
+  }
+
+  @include e(suffix) {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--stx-color-text-placeholder);
+  }
+
+  @include e(arrow) {
+    transition: transform 0.2s;
+
+    @include when(reverse) {
+      transform: rotate(180deg);
+    }
+  }
+
+  @include e(clear) {
+    cursor: pointer;
+    color: var(--stx-color-text-placeholder);
+
+    &:hover {
+      color: var(--stx-color-text-secondary);
+    }
+  }
+
+  @include e(dropdown) {
+    position: absolute;
+    background: var(--stx-color-bg);
+    border: 1px solid var(--stx-color-border-light);
+    border-radius: var(--stx-radius-base);
+    box-shadow: var(--stx-shadow-md);
+    box-sizing: border-box;
+    z-index: 2000;
+  }
+
+  @include e(panels) {
+    display: flex;
+  }
+
+  @include e(panel) {
+    width: 180px;
+    min-height: 200px;
+    max-height: 300px;
+    border-right: 1px solid var(--stx-color-border-light);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  @include e(menu) {
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+  }
+
+  @include e(node) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 34px;
+    font-size: 14px;
+    color: var(--stx-color-text-regular);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.1s;
+
+    &:hover {
+      background-color: var(--stx-color-bg-page);
+    }
+
+    @include when(active) {
+      color: var(--stx-color-primary);
+      font-weight: 600;
+    }
+
+    @include when(disabled) {
+      color: var(--stx-color-text-disabled);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  @include e(node-label) {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @include e(node-arrow) {
+    flex-shrink: 0;
+    margin-left: 8px;
+    color: var(--stx-color-text-placeholder);
+  }
+
+  // Suggestion (filter mode)
+  @include e(suggestion) {
+    min-width: 200px;
+    max-height: 300px;
+  }
+
+  @include e(suggestion-list) {
+    list-style: none;
+    padding: 4px 0;
+    margin: 0;
+  }
+
+  @include e(suggestion-item) {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 34px;
+    font-size: 14px;
+    color: var(--stx-color-text-regular);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.1s;
+
+    &:hover {
+      background-color: var(--stx-color-bg-page);
+    }
+  }
+
+  @include e(empty) {
+    padding: 10px 0;
+    text-align: center;
+    color: var(--stx-color-text-secondary);
+    font-size: 14px;
+    list-style: none;
+  }
+
+  // Sizes
+  @include m(small) {
+    .#{$namespace}-cascader__trigger {
+      min-height: 28px;
+      font-size: 13px;
+    }
+
+    .#{$namespace}-cascader__input {
+      line-height: 26px;
+      font-size: 13px;
+    }
+  }
+
+  @include m(large) {
+    .#{$namespace}-cascader__trigger {
+      min-height: 36px;
+      font-size: 15px;
+    }
+
+    .#{$namespace}-cascader__input {
+      line-height: 34px;
+      font-size: 15px;
+    }
+  }
+}

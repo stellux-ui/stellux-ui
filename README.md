@@ -45,7 +45,7 @@ pnpm add stellux-ui
 - [ ] TimePicker
 - [x] Upload
 - [x] Transfer
-- [ ] Cascader
+- [x] Cascader
 - [x] Autocomplete
 - [x] Mention
 - [x] Form

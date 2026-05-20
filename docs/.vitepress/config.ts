@@ -46,6 +46,7 @@ export default defineConfig({
             { text: 'Upload', link: '/components/upload' },
             { text: 'ColorPicker', link: '/components/color-picker' },
             { text: 'Transfer', link: '/components/transfer' },
+            { text: 'Cascader', link: '/components/cascader' },
         ]},
         { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
             { text: 'Badge', link: '/components/badge' },
