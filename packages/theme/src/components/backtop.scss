@@ -1,0 +1,30 @@
+@use '../mixins/bem' as *;
+
+@include b(backtop) {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--stx-color-bg);
+  color: var(--stx-color-text-regular);
+  box-shadow: var(--stx-shadow-md);
+  cursor: pointer;
+  z-index: 5;
+  border: 1px solid var(--stx-color-border-lighter);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    background: var(--stx-color-primary);
+    color: #fff;
+    box-shadow: var(--stx-shadow-lg);
+    border-color: var(--stx-color-primary);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

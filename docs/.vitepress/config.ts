@@ -50,6 +50,7 @@ export default defineConfig({
             { text: 'PageHeader', link: '/components/page-header' },
             { text: 'Steps', link: '/components/steps' },
             { text: 'Affix', link: '/components/affix' },
+            { text: 'Backtop', link: '/components/backtop' },
         ]},
         { text: 'Feedback', items: [            { text: 'Alert', link: '/components/alert' },
             { text: 'Tooltip', link: '/components/tooltip' },
