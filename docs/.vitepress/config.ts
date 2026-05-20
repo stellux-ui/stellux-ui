@@ -45,6 +45,7 @@ export default defineConfig({
             { text: 'Mention', link: '/components/mention' },
             { text: 'Upload', link: '/components/upload' },
             { text: 'ColorPicker', link: '/components/color-picker' },
+            { text: 'Transfer', link: '/components/transfer' },
         ]},
         { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
             { text: 'Badge', link: '/components/badge' },

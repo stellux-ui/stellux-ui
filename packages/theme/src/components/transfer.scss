@@ -1,0 +1,84 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(transfer) {
+  display: inline-flex;
+  align-items: stretch;
+
+  @include when(disabled) {
+    .#{$namespace}-transfer__panel {
+      background-color: var(--stx-color-bg-page);
+    }
+  }
+
+  @include e(panel) {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    background-color: var(--stx-color-bg);
+    overflow: hidden;
+  }
+
+  @include e(panel-header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--stx-color-border-light);
+    background-color: var(--stx-color-bg-page);
+  }
+
+  @include e(panel-count) {
+    font-size: 12px;
+    color: var(--stx-color-text-secondary);
+    white-space: nowrap;
+    margin-left: 4px;
+  }
+
+  @include e(filter) {
+    padding: 8px 12px 4px;
+  }
+
+  @include e(panel-body) {
+    flex: 1;
+    height: 250px;
+    overflow: hidden;
+
+    .#{$namespace}-checkbox-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .#{$namespace}-checkbox {
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      height: 32px;
+      margin-right: 0;
+      transition: background-color 0.15s;
+
+      &:hover {
+        background-color: var(--stx-color-bg-page);
+      }
+    }
+  }
+
+  @include e(empty) {
+    padding: 20px 0;
+    text-align: center;
+    color: var(--stx-color-text-placeholder);
+    font-size: 13px;
+    margin: 0;
+  }
+
+  @include e(buttons) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 16px;
+  }
+}
