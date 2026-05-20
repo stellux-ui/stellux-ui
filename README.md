@@ -68,7 +68,7 @@ pnpm add stellux-ui
 - [x] Result
 - [x] Skeleton
 - [x] Statistic
-- [ ] Segmented
+- [x] Segmented
 - [ ] Timeline
 - [ ] Tree
 - [ ] TreeSelect

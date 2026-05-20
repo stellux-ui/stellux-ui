@@ -1,0 +1,122 @@
+@use '../mixins/bem' as *;
+
+@include b(segmented) {
+  display: inline-flex;
+  background-color: var(--stx-color-bg-page);
+  border-radius: var(--stx-radius-base);
+  padding: 2px;
+  box-sizing: border-box;
+
+  @include when(block) {
+    display: flex;
+    width: 100%;
+
+    .stx-segmented__group {
+      width: 100%;
+    }
+
+    .stx-segmented__item {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
+  @include when(disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    .stx-segmented__item {
+      cursor: not-allowed;
+    }
+  }
+
+  @include m(small) {
+    .stx-segmented__item {
+      height: 24px;
+      padding: 0 8px;
+      font-size: var(--stx-font-size-xs);
+    }
+
+    .stx-segmented__thumb {
+      height: 24px;
+    }
+  }
+
+  @include m(large) {
+    .stx-segmented__item {
+      height: 32px;
+      padding: 0 16px;
+      font-size: var(--stx-font-size-md);
+    }
+
+    .stx-segmented__thumb {
+      height: 32px;
+    }
+  }
+
+  @include e(group) {
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+
+  @include e(thumb) {
+    position: absolute;
+    top: 0;
+    height: 28px;
+    background-color: var(--stx-color-bg);
+    border-radius: var(--stx-radius-sm);
+    box-shadow: var(--stx-shadow-sm);
+    transition: left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+                width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 0;
+  }
+
+  @include e(item) {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    font-size: var(--stx-font-size-base);
+    color: var(--stx-color-text-regular);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+
+    @include when(active) {
+      color: var(--stx-color-text-primary);
+      font-weight: 500;
+    }
+
+    @include when(disabled) {
+      color: var(--stx-color-text-disabled);
+      cursor: not-allowed;
+    }
+
+    &:hover:not(.is-active):not(.is-disabled) {
+      color: var(--stx-color-text-primary);
+    }
+  }
+
+  @include e(input) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+  }
+
+  @include e(item-icon) {
+    margin-right: 4px;
+    font-size: 1em;
+  }
+
+  @include e(item-label) {
+    line-height: 1;
+  }
+}

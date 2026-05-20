@@ -50,6 +50,7 @@ export default defineConfig({
             { text: 'Statistic', link: '/components/statistic' },
             { text: 'Collapse', link: '/components/collapse' },
             { text: 'Skeleton', link: '/components/skeleton' },
+            { text: 'Segmented', link: '/components/segmented' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },
