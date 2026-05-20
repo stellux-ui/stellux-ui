@@ -46,6 +46,7 @@ export default defineConfig({
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },
             { text: 'Breadcrumb', link: '/components/breadcrumb' },
+            { text: 'Dropdown', link: '/components/dropdown' },
         ]},
         { text: 'Feedback', items: [            { text: 'Alert', link: '/components/alert' },
             { text: 'Tooltip', link: '/components/tooltip' },
