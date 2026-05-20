@@ -37,7 +37,7 @@ pnpm add stellux-ui
 - [ ] Select
 - [x] Radio
 - [x] Checkbox
-- [ ] Switch
+- [x] Switch
 - [ ] Slider
 - [ ] Rate
 - [ ] ColorPicker

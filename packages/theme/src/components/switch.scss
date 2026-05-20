@@ -1,0 +1,143 @@
+@use 'sass:map';
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+@use '../mixins/function' as *;
+
+@include b(switch) {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: middle;
+
+  @include when(disabled) {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  @include e(input) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    margin: 0;
+  }
+
+  @include e(core) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: var(--stx-switch-width, 40px);
+    height: 20px;
+    border-radius: 10px;
+    background-color: var(--stx-switch-off-color, #{getCssVar('color-text-placeholder')});
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  @include when(checked) {
+    .#{$namespace}-switch__core {
+      background-color: var(--stx-switch-on-color, #{getCssVar('color-primary')});
+    }
+
+    .#{$namespace}-switch__action {
+      left: calc(100% - 18px);
+    }
+  }
+
+  @include e(action) {
+    position: absolute;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: left 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include e(loading-icon) {
+    width: 10px;
+    height: 10px;
+    color: var(--stx-switch-on-color, #{getCssVar('color-primary')});
+    animation: stx-switch-spin 0.8s linear infinite;
+  }
+
+  @include e(inner) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    color: #fff;
+    padding: 0 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  @include e(label) {
+    font-size: 14px;
+    color: getCssVar('color-text-primary');
+    transition: color 0.2s;
+
+    &--left {
+      margin-right: 8px;
+    }
+
+    &--right {
+      margin-left: 8px;
+    }
+  }
+
+  // Sizes
+  @include m(small) {
+    .#{$namespace}-switch__core {
+      width: var(--stx-switch-width, 32px);
+      height: 16px;
+      border-radius: 8px;
+    }
+
+    .#{$namespace}-switch__action {
+      width: 12px;
+      height: 12px;
+    }
+
+    &.is-checked .#{$namespace}-switch__action {
+      left: calc(100% - 14px);
+    }
+  }
+
+  @include m(large) {
+    .#{$namespace}-switch__core {
+      width: var(--stx-switch-width, 48px);
+      height: 24px;
+      border-radius: 12px;
+    }
+
+    .#{$namespace}-switch__action {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.is-checked .#{$namespace}-switch__action {
+      left: calc(100% - 22px);
+    }
+  }
+}
+
+@keyframes stx-switch-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
