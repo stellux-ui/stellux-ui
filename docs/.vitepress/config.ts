@@ -49,6 +49,7 @@ export default defineConfig({
             { text: 'Cascader', link: '/components/cascader' },
             { text: 'DatePicker', link: '/components/date-picker' },
             { text: 'InputTag', link: '/components/input-tag' },
+            { text: 'InputOTP', link: '/components/input-o-t-p' },
         ]},
         { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
             { text: 'Badge', link: '/components/badge' },

@@ -1,0 +1,91 @@
+@use '../mixins/bem' as *;
+
+@include b(input-otp) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  @include m(small) {
+    .stx-input-otp__input {
+      width: 32px;
+      height: 32px;
+      font-size: 14px;
+    }
+
+    .stx-input-otp__separator {
+      font-size: 14px;
+    }
+  }
+
+  @include m(large) {
+    .stx-input-otp__input {
+      width: 48px;
+      height: 48px;
+      font-size: 22px;
+    }
+
+    .stx-input-otp__separator {
+      font-size: 22px;
+    }
+  }
+
+  @include when(disabled) {
+    .stx-input-otp__input {
+      background-color: var(--stx-color-bg-page);
+      color: var(--stx-color-text-disabled);
+      cursor: not-allowed;
+      border-color: var(--stx-color-border);
+
+      &:hover {
+        border-color: var(--stx-color-border);
+      }
+    }
+  }
+
+  @include e(input) {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    font-family: inherit;
+    color: var(--stx-color-text-primary);
+    background-color: var(--stx-color-bg);
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    caret-color: var(--stx-color-primary);
+
+    &:hover {
+      border-color: var(--stx-color-border-dark);
+    }
+
+    @include when(active) {
+      border-color: var(--stx-color-primary);
+      box-shadow: 0 0 0 2px rgba(var(--stx-color-primary-rgb, 64, 128, 255), 0.15);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    // Hide spinner for number inputs
+    &[type='tel']::-webkit-inner-spin-button,
+    &[type='tel']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  @include e(separator) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stx-color-text-secondary);
+    font-size: 18px;
+    margin: 0 -2px;
+    user-select: none;
+  }
+}
