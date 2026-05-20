@@ -1,0 +1,82 @@
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/config' as *;
+
+@include b(link) {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: getCssVar('color-text-regular');
+  font-size: getCssVar('font-size-base');
+  font-weight: 500;
+  text-decoration: none;
+  outline: none;
+  padding: 0;
+  vertical-align: middle;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: getCssVar('color-primary');
+  }
+
+  &:active {
+    color: getCssVar('color-primary-dark');
+  }
+
+  &:focus-visible {
+    outline: 2px solid getCssVar('color-primary');
+    outline-offset: 2px;
+  }
+
+  @include when(underline) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include when(disabled) {
+    color: getCssVar('color-text-disabled');
+    cursor: not-allowed;
+
+    &:hover {
+      color: getCssVar('color-text-disabled');
+      text-decoration: none;
+    }
+  }
+
+  @each $type in (primary, success, warning, danger, info) {
+    @include m($type) {
+      color: getCssVar('color-#{$type}');
+
+      &:hover {
+        color: getCssVar('color-#{$type}-light');
+      }
+
+      &:active {
+        color: getCssVar('color-#{$type}-dark');
+      }
+
+      &.is-disabled {
+        color: color-mix(in srgb, #{getCssVar('color-#{$type}')} 40%, transparent);
+      }
+    }
+  }
+
+  @include e(icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  @include e(inner) {
+    display: inline-flex;
+    align-items: center;
+  }
+}
