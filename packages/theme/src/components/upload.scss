@@ -1,0 +1,287 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(upload) {
+  display: inline-block;
+  position: relative;
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    .#{$namespace}-upload__trigger {
+      cursor: not-allowed;
+    }
+
+    .#{$namespace}-upload__dragger {
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: var(--stx-color-border);
+      }
+    }
+  }
+
+  @include e(trigger) {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  @include e(input) {
+    display: none;
+  }
+
+  @include e(dragger) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 160px;
+    padding: 40px 20px;
+    border: 2px dashed var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    background-color: var(--stx-color-bg-page);
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: var(--stx-color-primary);
+    }
+
+    @include when(dragover) {
+      border-color: var(--stx-color-primary);
+      background-color: var(--stx-color-primary-soft);
+    }
+  }
+
+  @include e(dragger-icon) {
+    color: var(--stx-color-text-placeholder);
+    margin-bottom: 12px;
+  }
+
+  @include e(dragger-text) {
+    color: var(--stx-color-text-secondary);
+    font-size: 14px;
+
+    em {
+      color: var(--stx-color-primary);
+      font-style: normal;
+    }
+  }
+
+  @include e(file-list) {
+    margin-top: 8px;
+  }
+
+  @include e(file) {
+    display: flex;
+    align-items: center;
+    padding: 6px 4px;
+    border-radius: var(--stx-radius-base);
+    transition: background-color 0.15s;
+    font-size: 14px;
+    color: var(--stx-color-text-regular);
+    line-height: 1.4;
+
+    &:hover {
+      background-color: var(--stx-color-bg-page);
+    }
+
+    @include when(success) {
+      color: var(--stx-color-text-regular);
+    }
+
+    @include when(fail) {
+      color: var(--stx-color-danger);
+    }
+
+    @include when(uploading) {
+      color: var(--stx-color-text-secondary);
+    }
+  }
+
+  @include e(file-icon) {
+    flex-shrink: 0;
+    margin-right: 6px;
+    color: var(--stx-color-text-placeholder);
+  }
+
+  @include e(file-thumb) {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: var(--stx-radius-small);
+    margin-right: 8px;
+    cursor: pointer;
+  }
+
+  @include e(file-name) {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--stx-color-primary);
+    }
+  }
+
+  @include e(file-progress) {
+    flex: 1;
+    min-width: 0;
+    height: 2px;
+    background-color: var(--stx-color-border-light);
+    border-radius: 1px;
+    margin: 0 8px;
+    overflow: hidden;
+  }
+
+  @include e(file-progress-bar) {
+    height: 100%;
+    background-color: var(--stx-color-primary);
+    border-radius: 1px;
+    transition: width 0.3s;
+  }
+
+  @include e(file-actions) {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+
+  @include e(file-status) {
+    display: inline-flex;
+    color: var(--stx-color-success);
+  }
+
+  @include e(file-status--fail) {
+    display: inline-flex;
+    color: var(--stx-color-danger);
+  }
+
+  @include e(file-remove) {
+    display: inline-flex;
+    cursor: pointer;
+    color: var(--stx-color-text-placeholder);
+    opacity: 0;
+    transition: color 0.15s, opacity 0.15s;
+
+    .#{$namespace}-upload__file:hover & {
+      opacity: 1;
+    }
+
+    &:hover {
+      color: var(--stx-color-danger);
+    }
+  }
+
+  // Picture list type
+  @include m(picture) {
+    .#{$namespace}-upload__file {
+      padding: 8px 4px;
+    }
+  }
+
+  // Picture card list type
+  @include m(picture-card) {
+    .#{$namespace}-upload__trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      border: 1px dashed var(--stx-color-border);
+      border-radius: var(--stx-radius-base);
+      background-color: var(--stx-color-bg-page);
+      cursor: pointer;
+      transition: border-color 0.2s;
+      vertical-align: top;
+
+      &:hover {
+        border-color: var(--stx-color-primary);
+      }
+    }
+
+    .#{$namespace}-upload__file-list {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .#{$namespace}-upload__file {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      padding: 0;
+      border: 1px solid var(--stx-color-border-light);
+      border-radius: var(--stx-radius-base);
+      overflow: hidden;
+      position: relative;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    .#{$namespace}-upload__file-thumb {
+      width: 100%;
+      height: 100%;
+      margin-right: 0;
+      border-radius: 0;
+    }
+
+    .#{$namespace}-upload__file-name {
+      display: none;
+    }
+
+    .#{$namespace}-upload__file-actions {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.2s;
+      margin-left: 0;
+    }
+
+    .#{$namespace}-upload__file:hover .#{$namespace}-upload__file-actions {
+      opacity: 1;
+    }
+
+    .#{$namespace}-upload__file-status,
+    .#{$namespace}-upload__file-status--fail,
+    .#{$namespace}-upload__file-remove {
+      color: #fff;
+      opacity: 1;
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+        opacity: 0.8;
+      }
+    }
+
+    .#{$namespace}-upload__file-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0;
+    }
+  }
+}
