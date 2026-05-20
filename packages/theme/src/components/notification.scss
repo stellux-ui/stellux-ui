@@ -1,0 +1,163 @@
+@use '../mixins/bem' as *;
+
+@include b(notification) {
+  position: fixed;
+  display: flex;
+  align-items: flex-start;
+  width: 330px;
+  padding: 16px;
+  border-radius: var(--stx-radius-lg);
+  background-color: var(--stx-color-bg);
+  box-shadow: var(--stx-shadow-lg);
+  border: 1px solid var(--stx-color-border-light);
+  box-sizing: border-box;
+  overflow: hidden;
+  pointer-events: all;
+  cursor: default;
+
+  // ---- Position modifiers ----
+  @include m(right) {
+    right: 16px;
+  }
+
+  @include m(left) {
+    left: 16px;
+  }
+
+  // ---- Type modifiers ----
+  @include m(success) {
+    border-left: 3px solid var(--stx-color-success);
+
+    .stx-notification__icon {
+      color: var(--stx-color-success);
+    }
+  }
+
+  @include m(warning) {
+    border-left: 3px solid var(--stx-color-warning);
+
+    .stx-notification__icon {
+      color: var(--stx-color-warning);
+    }
+  }
+
+  @include m(info) {
+    border-left: 3px solid var(--stx-color-info);
+
+    .stx-notification__icon {
+      color: var(--stx-color-info);
+    }
+  }
+
+  @include m(error) {
+    border-left: 3px solid var(--stx-color-danger);
+
+    .stx-notification__icon {
+      color: var(--stx-color-danger);
+    }
+  }
+
+  // ---- States ----
+  @include when(closable) {
+    padding-right: 40px;
+  }
+
+  // ---- Elements ----
+  @include e(icon) {
+    flex-shrink: 0;
+    margin-right: 12px;
+    margin-top: 2px;
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @include e(body) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  @include e(title) {
+    font-size: var(--stx-font-size-md);
+    font-weight: 600;
+    color: var(--stx-color-text-primary);
+    line-height: 1.4;
+    margin: 0 0 6px;
+    overflow-wrap: break-word;
+  }
+
+  @include e(content) {
+    font-size: var(--stx-font-size-base);
+    color: var(--stx-color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    overflow-wrap: break-word;
+  }
+
+  @include e(close) {
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--stx-color-text-placeholder);
+    transition: color 0.15s ease;
+    outline: none;
+
+    &:hover {
+      color: var(--stx-color-text-primary);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+// ---- Transition: slide in from right ----
+.stx-notification-fade-right-enter-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.stx-notification-fade-right-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.stx-notification-fade-right-enter-from {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.stx-notification-fade-right-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+// ---- Transition: slide in from left ----
+.stx-notification-fade-left-enter-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.stx-notification-fade-left-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.stx-notification-fade-left-enter-from {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.stx-notification-fade-left-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}

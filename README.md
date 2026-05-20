@@ -92,7 +92,7 @@ pnpm add stellux-ui
 - [x] Drawer
 - [x] Message
 - [ ] MessageBox
-- [ ] Notification
+- [x] Notification
 - [x] Tooltip
 - [x] Popover
 - [ ] Popconfirm
