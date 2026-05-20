@@ -31,7 +31,7 @@ pnpm add stellux-ui
 ### Form
 
 - [x] Input
-- [ ] InputNumber
+- [x] InputNumber
 - [ ] InputTag
 - [ ] InputOTP
 - [ ] Select

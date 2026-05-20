@@ -37,6 +37,7 @@ export default defineConfig({
             { text: 'Radio', link: '/components/radio' },
             { text: 'Checkbox', link: '/components/checkbox' },
             { text: 'Switch', link: '/components/switch' },
+            { text: 'InputNumber', link: '/components/input-number' },
         ]},
         { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
             { text: 'Badge', link: '/components/badge' },

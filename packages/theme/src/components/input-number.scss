@@ -1,0 +1,211 @@
+@use 'sass:map';
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+@use '../mixins/function' as *;
+
+$input-number-height: 32px;
+$input-number-height-small: 28px;
+$input-number-height-large: 36px;
+
+@include b(input-number) {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid getCssVar('color-border');
+  border-radius: getCssVar('radius-base');
+  background: getCssVar('color-bg');
+  line-height: #{$input-number-height - 2px};
+
+  @include when(disabled) {
+    background-color: getCssVar('color-bg-page');
+    cursor: not-allowed;
+
+    .#{$namespace}-input-number__inner {
+      color: getCssVar('color-text-disabled');
+      cursor: not-allowed;
+    }
+
+    .#{$namespace}-input-number__decrease,
+    .#{$namespace}-input-number__increase {
+      color: getCssVar('color-text-disabled');
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  @include when(without-controls) {
+    .#{$namespace}-input-number__wrapper {
+      padding: 0 12px;
+    }
+  }
+
+  @include e(decrease) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 100%;
+    color: getCssVar('color-text-secondary');
+    cursor: pointer;
+    border-right: 1px solid getCssVar('color-border');
+    transition: background-color 0.15s ease, color 0.15s ease;
+    flex-shrink: 0;
+
+    &:hover {
+      background-color: getCssVar('color-bg-page');
+      color: getCssVar('color-primary');
+    }
+
+    @include when(disabled) {
+      color: getCssVar('color-text-disabled');
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+        color: getCssVar('color-text-disabled');
+      }
+    }
+  }
+
+  @include e(increase) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 100%;
+    color: getCssVar('color-text-secondary');
+    cursor: pointer;
+    border-left: 1px solid getCssVar('color-border');
+    transition: background-color 0.15s ease, color 0.15s ease;
+    flex-shrink: 0;
+    order: 3;
+
+    &:hover {
+      background-color: getCssVar('color-bg-page');
+      color: getCssVar('color-primary');
+    }
+
+    @include when(disabled) {
+      color: getCssVar('color-text-disabled');
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+        color: getCssVar('color-text-disabled');
+      }
+    }
+  }
+
+  @include e(wrapper) {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    order: 2;
+  }
+
+  @include e(inner) {
+    width: 100%;
+    height: #{$input-number-height - 2px};
+    padding: 0 12px;
+    margin: 0;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: getCssVar('font-size-base');
+    font-family: inherit;
+    color: getCssVar('color-text-primary');
+    text-align: center;
+    line-height: #{$input-number-height - 2px};
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: getCssVar('color-text-placeholder');
+    }
+  }
+
+  // Controls on the right
+  @include when(controls-right) {
+    position: relative;
+
+    .#{$namespace}-input-number__decrease,
+    .#{$namespace}-input-number__increase {
+      width: 24px;
+      border-left: 1px solid getCssVar('color-border');
+      border-right: none;
+      order: 3;
+    }
+
+    .#{$namespace}-input-number__decrease {
+      order: 4;
+      border-top: 1px solid getCssVar('color-border');
+    }
+
+    .#{$namespace}-input-number__increase {
+      order: 3;
+    }
+
+    // Stack them vertically using a flex wrapper approach
+    display: inline-flex;
+    flex-wrap: nowrap;
+
+    .#{$namespace}-input-number__wrapper {
+      order: 1;
+    }
+
+    .#{$namespace}-input-number__increase {
+      height: 50%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-bottom: none;
+      border-radius: 0 getCssVar('radius-base') 0 0;
+    }
+
+    .#{$namespace}-input-number__decrease {
+      height: 50%;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      border-top: 1px solid getCssVar('color-border');
+      border-radius: 0 0 getCssVar('radius-base') 0;
+    }
+
+    .#{$namespace}-input-number__inner {
+      text-align: center;
+      padding-right: 36px;
+    }
+  }
+
+  // Sizes
+  @include m(small) {
+    line-height: #{$input-number-height-small - 2px};
+
+    .#{$namespace}-input-number__inner {
+      height: #{$input-number-height-small - 2px};
+      line-height: #{$input-number-height-small - 2px};
+      font-size: getCssVar('font-size-sm');
+    }
+
+    .#{$namespace}-input-number__decrease,
+    .#{$namespace}-input-number__increase {
+      width: 28px;
+    }
+  }
+
+  @include m(large) {
+    line-height: #{$input-number-height-large - 2px};
+
+    .#{$namespace}-input-number__inner {
+      height: #{$input-number-height-large - 2px};
+      line-height: #{$input-number-height-large - 2px};
+      font-size: getCssVar('font-size-md');
+    }
+
+    .#{$namespace}-input-number__decrease,
+    .#{$namespace}-input-number__increase {
+      width: 36px;
+    }
+  }
+}
