@@ -1,0 +1,29 @@
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/config' as *;
+
+@include b(text) {
+  font-size: getCssVar('font-size-base');
+  color: getCssVar('color-text-regular');
+  line-height: 1.5;
+
+  @include m(small) {
+    font-size: getCssVar('font-size-xs');
+  }
+
+  @include m(large) {
+    font-size: getCssVar('font-size-md');
+  }
+
+  @each $type in (primary, success, warning, danger, info) {
+    @include m($type) {
+      color: getCssVar('color-#{$type}');
+    }
+  }
+
+  @include when(truncated) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
