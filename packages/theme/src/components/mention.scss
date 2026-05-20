@@ -1,0 +1,107 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(mention) {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+
+  @include when(disabled) {
+    cursor: not-allowed;
+
+    .#{$namespace}-mention__input {
+      background-color: var(--stx-color-bg-page, #f5f7fa);
+      color: var(--stx-color-text-disabled, #c0c4cc);
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(input) {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--stx-color-border, #dcdfe6);
+    border-radius: var(--stx-radius-base, 4px);
+    background-color: var(--stx-color-bg, #fff);
+    color: var(--stx-color-text-primary, #303133);
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 1.5;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.15s ease;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: var(--stx-color-border-dark, #c0c4cc);
+    }
+
+    &:focus {
+      border-color: var(--stx-color-primary, #409eff);
+      box-shadow: 0 0 0 2px var(--stx-color-primary-soft, rgba(64, 158, 255, 0.2));
+    }
+
+    &::placeholder {
+      color: var(--stx-color-text-placeholder, #a8abb2);
+    }
+  }
+
+  @include e(measure) {
+    position: absolute;
+    visibility: hidden;
+    white-space: pre-wrap;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 1.5;
+    padding: 8px 12px;
+    pointer-events: none;
+  }
+
+  @include e(dropdown) {
+    background: var(--stx-color-bg, #fff);
+    border: 1px solid var(--stx-color-border-light, #e4e7ed);
+    border-radius: var(--stx-radius-base, 4px);
+    box-shadow: var(--stx-shadow-md, 0 4px 12px rgba(0, 0, 0, 0.1));
+    padding: 4px 0;
+    box-sizing: border-box;
+    min-width: 160px;
+  }
+
+  @include e(option) {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    height: 34px;
+    font-size: 14px;
+    color: var(--stx-color-text-regular, #606266);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.1s;
+
+    &:hover {
+      background-color: var(--stx-color-bg-page, #f5f7fa);
+    }
+
+    @include when(highlighted) {
+      background-color: var(--stx-color-bg-page, #f5f7fa);
+    }
+
+    @include when(disabled) {
+      color: var(--stx-color-text-disabled, #c0c4cc);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  @include e(loading) {
+    padding: 10px 12px;
+    text-align: center;
+    color: var(--stx-color-text-secondary, #909399);
+    font-size: 14px;
+  }
+}
