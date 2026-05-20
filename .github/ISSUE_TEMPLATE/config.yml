@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://stellux-ui.github.io/stellux-ui/
+    about: Check the documentation before opening an issue.
+  - name: Discussions
+    url: https://github.com/stellux-ui/stellux-ui/discussions
+    about: Ask questions and share ideas in Discussions.

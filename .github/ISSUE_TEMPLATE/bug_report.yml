@@ -1,0 +1,148 @@
+name: Bug Report
+description: Report a bug in Stellux UI
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug. Please fill out the information below.
+
+  - type: input
+    id: version
+    attributes:
+      label: Stellux UI Version
+      placeholder: e.g. 1.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: vue-version
+    attributes:
+      label: Vue Version
+      placeholder: e.g. 3.5.0
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: e.g. Chrome 125, Firefox 128, Safari 18
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component is affected?
+      options:
+        - Button
+        - Icon
+        - Link
+        - Text
+        - Scrollbar
+        - Space
+        - Divider
+        - Splitter
+        - Input
+        - InputNumber
+        - InputTag
+        - InputOTP
+        - Select
+        - Radio
+        - Checkbox
+        - Switch
+        - Slider
+        - Rate
+        - ColorPicker
+        - DatePicker
+        - TimePicker
+        - Upload
+        - Transfer
+        - Cascader
+        - Autocomplete
+        - Mention
+        - Form
+        - Table
+        - Tag
+        - Badge
+        - Avatar
+        - Card
+        - Carousel
+        - Calendar
+        - Collapse
+        - Descriptions
+        - Empty
+        - Image
+        - Pagination
+        - Progress
+        - Result
+        - Skeleton
+        - Statistic
+        - Segmented
+        - Timeline
+        - Tree
+        - TreeSelect
+        - InfiniteScroll
+        - Menu
+        - Tabs
+        - Breadcrumb
+        - Dropdown
+        - PageHeader
+        - Steps
+        - Affix
+        - Backtop
+        - Anchor
+        - Dialog
+        - Drawer
+        - Message
+        - MessageBox
+        - Notification
+        - Tooltip
+        - Popover
+        - Popconfirm
+        - Loading
+        - Alert
+        - Tour
+        - Watermark
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Describe the bug clearly. What happened? What did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Minimal steps to reproduce the behavior.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Link
+      description: Provide a minimal reproduction (StackBlitz, CodeSandbox, or GitHub repo).
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened instead?
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain the problem.

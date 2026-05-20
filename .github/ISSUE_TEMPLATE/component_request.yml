@@ -1,0 +1,52 @@
+name: Component Request
+description: Request a new component to be added
+title: "[Component] "
+labels: ["new component"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest a new component for Stellux UI.
+
+  - type: input
+    id: name
+    attributes:
+      label: Component Name
+      placeholder: e.g. Segmented, Watermark, Tour
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What does this component do? When would you use it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: api
+    attributes:
+      label: Proposed API
+      description: Describe the props, events, and slots you'd expect.
+      value: |
+        ### Props
+        | Prop | Type | Default | Description |
+        |------|------|---------|-------------|
+        |      |      |         |             |
+
+        ### Events
+
+        ### Slots
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Usage Examples
+      description: Show how you'd use this component in a template.
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: Reference
+      description: Links to similar components in other libraries or design systems.
