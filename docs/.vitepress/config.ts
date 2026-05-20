@@ -71,6 +71,7 @@ export default defineConfig({
             { text: 'Pagination', link: '/components/pagination' },
             { text: 'Tree', link: '/components/tree' },
             { text: 'TreeSelect', link: '/components/tree-select' },
+            { text: 'Carousel', link: '/components/carousel' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },

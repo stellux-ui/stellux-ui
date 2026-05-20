@@ -1,0 +1,146 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(carousel) {
+  position: relative;
+  overflow: hidden;
+
+  @include e(container) {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include m(vertical) {
+    .#{$namespace}-carousel__container {
+      flex-direction: column;
+    }
+  }
+
+  @include m(card) {
+    .#{$namespace}-carousel__container {
+      display: block;
+      position: relative;
+    }
+  }
+
+  // Arrows
+  @include e(arrow) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s, opacity 0.2s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  @include e(arrow--left) {
+    left: 12px;
+  }
+
+  @include e(arrow--right) {
+    right: 12px;
+  }
+
+  // Indicators
+  @include e(indicators) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include when(outside) {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      padding: 10px 0;
+    }
+  }
+
+  @include e(indicators--vertical) {
+    flex-direction: column;
+    right: 10px;
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+  }
+
+  @include e(indicator) {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background-color 0.2s, width 0.2s;
+
+    @include when(active) {
+      background-color: var(--stx-color-primary);
+      width: 24px;
+      border-radius: 4px;
+    }
+  }
+
+  // Outside indicators use themed colors
+  .#{$namespace}-carousel__indicators.is-outside {
+    .#{$namespace}-carousel__indicator {
+      background-color: var(--stx-color-border);
+
+      &.is-active {
+        background-color: var(--stx-color-primary);
+      }
+    }
+  }
+}
+
+// Carousel Item
+@include b(carousel-item) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  @include when(active) {
+    z-index: 2;
+  }
+
+  // Default (non-card) mode: items in flex
+  .#{$namespace}-carousel:not(.#{$namespace}-carousel--card) & {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .#{$namespace}-carousel--card & {
+    position: absolute;
+  }
+
+  @include when(in-stage) {
+    z-index: 1;
+  }
+}
