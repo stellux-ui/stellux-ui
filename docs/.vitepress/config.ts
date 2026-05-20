@@ -49,6 +49,7 @@ export default defineConfig({
             { text: 'Popover', link: '/components/popover' },
         ]},
         { text: 'Other', items: [            { text: 'Overlay', link: '/components/overlay' },
+            { text: 'CollapseTransition', link: '/components/collapse-transition' },
         ]},
       ]
     },
