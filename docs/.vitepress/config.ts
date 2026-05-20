@@ -48,6 +48,7 @@ export default defineConfig({
             { text: 'Breadcrumb', link: '/components/breadcrumb' },
             { text: 'Dropdown', link: '/components/dropdown' },
             { text: 'PageHeader', link: '/components/page-header' },
+            { text: 'Steps', link: '/components/steps' },
         ]},
         { text: 'Feedback', items: [            { text: 'Alert', link: '/components/alert' },
             { text: 'Tooltip', link: '/components/tooltip' },
