@@ -69,6 +69,7 @@ export default defineConfig({
             { text: 'Table', link: '/components/table' },
             { text: 'Image', link: '/components/image' },
             { text: 'Pagination', link: '/components/pagination' },
+            { text: 'Tree', link: '/components/tree' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },

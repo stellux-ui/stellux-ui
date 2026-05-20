@@ -1,0 +1,103 @@
+@use '../mixins/bem' as *;
+@use '../mixins/config' as *;
+
+@include b(tree) {
+  position: relative;
+  color: var(--stx-color-text-regular);
+  font-size: var(--stx-font-size-base);
+
+  @include e(node) {
+    display: flex;
+    align-items: center;
+    height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    white-space: nowrap;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: var(--stx-color-bg-page);
+    }
+
+    @include when(current) {
+      background-color: var(--stx-color-primary-soft);
+    }
+
+    @include when(disabled) {
+      color: var(--stx-color-text-disabled);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  @include e(expand-icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--stx-color-text-secondary);
+    transition: transform 0.2s ease;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @include when(expanded) {
+      transform: rotate(90deg);
+    }
+
+    @include when(leaf) {
+      visibility: hidden;
+    }
+  }
+
+  @include e(loading-icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    animation: stx-tree-spin 1s linear infinite;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @include e(node-content) {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 4px;
+    font-size: var(--stx-font-size-base);
+    line-height: 28px;
+  }
+
+  @include e(empty) {
+    text-align: center;
+    color: var(--stx-color-text-secondary);
+    padding: 20px 0;
+    font-size: var(--stx-font-size-base);
+  }
+
+  // Checkbox inside tree node
+  .#{$namespace}-checkbox {
+    margin-right: 4px;
+  }
+}
+
+@keyframes stx-tree-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
