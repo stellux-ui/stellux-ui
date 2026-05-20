@@ -1,0 +1,262 @@
+@use 'sass:map';
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/_var' as *;
+@use '../common/var';
+
+$table: () !default;
+$table: map.merge(
+  (
+    'border-color': getCssVar('color-border'),
+    'header-bg': getCssVar('color-bg-page'),
+    'header-text': getCssVar('color-text-primary'),
+    'row-bg': getCssVar('color-bg'),
+    'row-hover-bg': getCssVar('color-bg-page'),
+    'text-color': getCssVar('color-text-regular'),
+    'stripe-bg': rgba(0, 0, 0, 0.02),
+    'current-row-bg': getCssVar('color-primary-soft'),
+    'empty-text-color': getCssVar('color-text-secondary'),
+    'sort-color': getCssVar('color-text-placeholder'),
+    'sort-active-color': getCssVar('color-primary'),
+    'cell-padding': 8px 12px,
+    'cell-padding-sm': 6px 8px,
+    'cell-padding-lg': 12px 16px,
+  ),
+  $table,
+);
+
+@include b(table) {
+  @include set-component-css-var('table', $table);
+
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: getCssVar('font-size-base');
+  color: getCssVar('table', 'text-color');
+  background-color: getCssVar('table', 'row-bg');
+
+  table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  th,
+  td {
+    padding: getCssVar('table', 'cell-padding');
+    box-sizing: border-box;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid getCssVar('table', 'border-color');
+    transition: background-color 0.15s ease;
+  }
+
+  // --- Sizes ---
+  @include m(small) {
+    font-size: getCssVar('font-size-sm');
+
+    th,
+    td {
+      padding: getCssVar('table', 'cell-padding-sm');
+    }
+  }
+
+  @include m(large) {
+    font-size: getCssVar('font-size-md');
+
+    th,
+    td {
+      padding: getCssVar('table', 'cell-padding-lg');
+    }
+  }
+
+  // --- Stripe ---
+  @include when(stripe) {
+    .stx-table__row:nth-child(even) td {
+      background-color: getCssVar('table', 'stripe-bg');
+    }
+  }
+
+  // --- Border ---
+  @include when(border) {
+    border: 1px solid getCssVar('table', 'border-color');
+    border-radius: getCssVar('radius-base');
+
+    th,
+    td {
+      border-right: 1px solid getCssVar('table', 'border-color');
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    th {
+      border-bottom: 1px solid getCssVar('table', 'border-color');
+    }
+  }
+
+  // --- Header ---
+  @include e(header-wrapper) {
+    overflow: hidden;
+  }
+
+  @include e(header) {
+    th {
+      background-color: getCssVar('table', 'header-bg');
+      color: getCssVar('table', 'header-text');
+      font-weight: 600;
+      user-select: none;
+    }
+  }
+
+  // --- Body ---
+  @include e(body) {
+    .stx-table__row {
+      &:hover td {
+        background-color: getCssVar('table', 'row-hover-bg');
+      }
+    }
+  }
+
+  @include e(row) {
+    transition: background-color 0.15s ease;
+
+    @include when(current) {
+      td {
+        background-color: getCssVar('table', 'current-row-bg');
+      }
+    }
+  }
+
+  // --- Cells ---
+  @include e(cell) {
+    &.is-align-center {
+      text-align: center;
+    }
+
+    &.is-align-right {
+      text-align: right;
+    }
+
+    &.is-sortable {
+      cursor: pointer;
+
+      &:hover {
+        background-color: getCssVar('table', 'row-hover-bg');
+      }
+    }
+
+    &.is-tooltip {
+      .stx-table__cell-content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  @include e(cell-content) {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.5;
+  }
+
+  // --- Sort carets ---
+  @include e(sort-caret-group) {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 4px;
+    gap: 1px;
+    vertical-align: middle;
+  }
+
+  @include e(sort-caret) {
+    display: flex;
+    align-items: center;
+    color: getCssVar('table', 'sort-color');
+    line-height: 0;
+    transition: color 0.15s ease;
+
+    svg {
+      display: block;
+    }
+
+    @include when(ascending) {
+      color: getCssVar('table', 'sort-active-color');
+    }
+
+    @include when(descending) {
+      color: getCssVar('table', 'sort-active-color');
+    }
+  }
+
+  // --- Expand ---
+  @include e(expand-icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: getCssVar('color-text-secondary');
+    transition: transform 0.2s ease;
+    border-radius: getCssVar('radius-sm');
+
+    &:hover {
+      color: getCssVar('color-text-primary');
+      background-color: getCssVar('color-bg-page');
+    }
+
+    @include when(expanded) {
+      transform: rotate(90deg);
+    }
+  }
+
+  @include e(expanded-row) {
+    td {
+      background-color: getCssVar('color-bg-page');
+      padding: 16px 12px;
+    }
+  }
+
+  @include e(expanded-cell) {
+    padding: 0;
+  }
+
+  // --- Empty ---
+  @include e(empty) {
+    text-align: center;
+    padding: 32px 0 !important;
+  }
+
+  @include e(empty-text) {
+    color: getCssVar('table', 'empty-text-color');
+    font-size: getCssVar('font-size-base');
+    line-height: 1.5;
+  }
+
+  // --- Footer / Summary ---
+  @include e(footer-wrapper) {
+    overflow: hidden;
+    border-top: 1px solid getCssVar('table', 'border-color');
+  }
+
+  @include e(footer) {
+    td {
+      background-color: getCssVar('table', 'header-bg');
+      font-weight: 600;
+    }
+  }
+
+  // --- Selection checkbox alignment ---
+  .stx-checkbox {
+    margin-right: 0;
+  }
+}

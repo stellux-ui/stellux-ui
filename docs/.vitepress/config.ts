@@ -54,6 +54,7 @@ export default defineConfig({
             { text: 'Timeline', link: '/components/timeline' },
             { text: 'Descriptions', link: '/components/descriptions' },
             { text: 'InfiniteScroll', link: '/components/infinite-scroll' },
+            { text: 'Table', link: '/components/table' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },
