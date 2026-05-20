@@ -46,7 +46,7 @@ pnpm add stellux-ui
 - [ ] Upload
 - [ ] Transfer
 - [ ] Cascader
-- [ ] Autocomplete
+- [x] Autocomplete
 - [ ] Mention
 - [x] Form
 
