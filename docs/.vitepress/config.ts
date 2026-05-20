@@ -48,7 +48,8 @@ export default defineConfig({
             { text: 'Tooltip', link: '/components/tooltip' },
             { text: 'Popover', link: '/components/popover' },
         ]},
-        { text: 'Other', items: [        ]},
+        { text: 'Other', items: [            { text: 'Overlay', link: '/components/overlay' },
+        ]},
       ]
     },
     socialLinks: [{ icon: 'github', link: 'https://github.com/stellux-ui/stellux-ui' }],
