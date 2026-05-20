@@ -1,0 +1,243 @@
+@use '../mixins/bem' as *;
+
+@include b(message-box) {
+  position: relative;
+  background: var(--stx-color-bg);
+  border-radius: var(--stx-radius-lg);
+  box-shadow: var(--stx-shadow-lg);
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  overflow: hidden;
+  box-sizing: border-box;
+
+  @include m(success) {
+    .stx-message-box__icon {
+      color: var(--stx-color-success);
+    }
+  }
+
+  @include m(warning) {
+    .stx-message-box__icon {
+      color: var(--stx-color-warning);
+    }
+  }
+
+  @include m(info) {
+    .stx-message-box__icon {
+      color: var(--stx-color-info);
+    }
+  }
+
+  @include m(error) {
+    .stx-message-box__icon {
+      color: var(--stx-color-danger);
+    }
+  }
+
+  @include e(wrapper) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+  }
+
+  @include e(header) {
+    padding: 16px 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include e(title) {
+    font-size: var(--stx-font-size-md);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--stx-color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+  }
+
+  @include e(close) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    border-radius: var(--stx-radius-sm);
+    cursor: pointer;
+    color: var(--stx-color-text-secondary);
+    flex-shrink: 0;
+    transition: color var(--stx-transition-duration) var(--stx-transition-timing),
+                background-color var(--stx-transition-duration) var(--stx-transition-timing);
+    outline: none;
+
+    &:hover {
+      color: var(--stx-color-text-primary);
+      background-color: var(--stx-color-border-light);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--stx-color-primary);
+      outline-offset: -2px;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  @include e(body) {
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: var(--stx-color-text-regular);
+    font-size: var(--stx-font-size-base);
+    line-height: 1.6;
+  }
+
+  @include e(icon) {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @include e(message) {
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  @include e(input) {
+    padding: 0 20px 8px;
+  }
+
+  @include e(input-inner) {
+    width: 100%;
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    background: var(--stx-color-bg);
+    color: var(--stx-color-text-primary);
+    font-size: var(--stx-font-size-base);
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color var(--stx-transition-duration) var(--stx-transition-timing);
+
+    &:focus {
+      border-color: var(--stx-color-primary);
+    }
+
+    &.is-error {
+      border-color: var(--stx-color-danger);
+    }
+
+    &::placeholder {
+      color: var(--stx-color-text-placeholder);
+    }
+  }
+
+  @include e(input-error) {
+    margin: 4px 0 0;
+    font-size: var(--stx-font-size-xs);
+    color: var(--stx-color-danger);
+    line-height: 1.4;
+  }
+
+  @include e(footer) {
+    padding: 8px 20px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  @include e(cancel) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 16px;
+    font-size: var(--stx-font-size-base);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid var(--stx-color-border);
+    border-radius: var(--stx-radius-base);
+    background-color: var(--stx-color-bg);
+    color: var(--stx-color-text-primary);
+    outline: none;
+    transition: border-color 0.15s ease,
+                background-color 0.15s ease,
+                color 0.15s ease;
+
+    &:hover {
+      background-color: var(--stx-color-primary-soft);
+      color: var(--stx-color-primary);
+      border-color: var(--stx-color-primary);
+    }
+
+    &:active {
+      color: var(--stx-color-primary-dark);
+      border-color: var(--stx-color-primary-dark);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--stx-color-primary);
+      outline-offset: 2px;
+    }
+  }
+
+  @include e(confirm) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 16px;
+    font-size: var(--stx-font-size-base);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid var(--stx-color-primary);
+    border-radius: var(--stx-radius-base);
+    background-color: var(--stx-color-primary);
+    color: #fff;
+    outline: none;
+    transition: border-color 0.15s ease,
+                background-color 0.15s ease;
+
+    &:hover {
+      background-color: var(--stx-color-primary-light);
+      border-color: var(--stx-color-primary-light);
+    }
+
+    &:active {
+      background-color: var(--stx-color-primary-dark);
+      border-color: var(--stx-color-primary-dark);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--stx-color-primary);
+      outline-offset: 2px;
+    }
+  }
+}

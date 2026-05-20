@@ -51,6 +51,7 @@ export default defineConfig({
             { text: 'Drawer', link: '/components/drawer' },
             { text: 'Message', link: '/components/message' },
             { text: 'Notification', link: '/components/notification' },
+            { text: 'MessageBox', link: '/components/message-box' },
         ]},
         { text: 'Other', items: [            { text: 'Overlay', link: '/components/overlay' },
             { text: 'CollapseTransition', link: '/components/collapse-transition' },
