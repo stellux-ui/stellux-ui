@@ -33,6 +33,7 @@ export default defineConfig({
             { text: 'Input', link: '/components/input' },
         ]},
         { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
+            { text: 'Badge', link: '/components/badge' },
         ]},
         { text: 'Navigation', items: [        ]},
         { text: 'Feedback', items: [        ]},

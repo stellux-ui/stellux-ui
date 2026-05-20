@@ -1,0 +1,47 @@
+@use '../mixins/bem' as *;
+
+@include b(badge) {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+
+  @include e(content) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 18px;
+    min-width: 18px;
+    padding: 0 6px;
+    font-size: 11px;
+    color: #fff;
+    line-height: 1;
+    border-radius: 10px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    z-index: 1;
+
+    @include when(dot) {
+      width: 8px;
+      height: 8px;
+      min-width: auto;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    @include when(fixed) {
+      position: static;
+      transform: none;
+    }
+  }
+
+  // ---- Types ----
+  @each $type in (primary, success, warning, danger, info) {
+    @include m($type) {
+      background-color: var(--stx-color-#{$type});
+    }
+  }
+}

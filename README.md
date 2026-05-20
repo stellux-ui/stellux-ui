@@ -54,7 +54,7 @@ pnpm add stellux-ui
 
 - [ ] Table
 - [x] Tag
-- [ ] Badge
+- [x] Badge
 - [ ] Avatar
 - [ ] Card
 - [ ] Carousel
