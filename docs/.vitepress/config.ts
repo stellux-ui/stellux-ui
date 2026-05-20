@@ -31,7 +31,8 @@ export default defineConfig({
         { text: 'Form', items: [
             { text: 'Input', link: '/components/input' },
         ]},
-        { text: 'Data Display', items: [        ]},
+        { text: 'Data Display', items: [            { text: 'Tag', link: '/components/tag' },
+        ]},
         { text: 'Navigation', items: [        ]},
         { text: 'Feedback', items: [        ]},
         { text: 'Other', items: [        ]},

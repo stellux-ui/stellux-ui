@@ -1,0 +1,110 @@
+@use '../mixins/bem' as *;
+
+@include b(tag) {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  font-size: 12px;
+  border-radius: var(--stx-radius-sm);
+  border: 1px solid transparent;
+  line-height: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease;
+
+  // ---- Sizes ----
+  @include m(small) {
+    height: 20px;
+    font-size: 11px;
+  }
+
+  @include m(large) {
+    height: 28px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
+  // ---- Effect: light (default) ----
+  @include m(light) {
+    background-color: var(--stx-color-bg);
+    color: var(--stx-color-text-regular);
+    border-color: var(--stx-color-border);
+
+    @each $type in (primary, success, warning, danger, info) {
+      &.stx-tag--#{$type} {
+        background-color: var(--stx-color-#{$type}-soft, rgba(0, 0, 0, 0.05));
+        color: var(--stx-color-#{$type});
+        border-color: var(--stx-color-#{$type});
+      }
+    }
+  }
+
+  // ---- Effect: dark ----
+  @include m(dark) {
+    background-color: var(--stx-color-text-regular);
+    color: #fff;
+    border-color: transparent;
+
+    @each $type in (primary, success, warning, danger, info) {
+      &.stx-tag--#{$type} {
+        background-color: var(--stx-color-#{$type});
+        color: #fff;
+        border-color: transparent;
+      }
+    }
+  }
+
+  // ---- Effect: plain ----
+  @include m(plain) {
+    background-color: transparent;
+    color: var(--stx-color-text-regular);
+    border-color: var(--stx-color-border);
+
+    @each $type in (primary, success, warning, danger, info) {
+      &.stx-tag--#{$type} {
+        background-color: transparent;
+        color: var(--stx-color-#{$type});
+        border-color: var(--stx-color-#{$type});
+      }
+    }
+  }
+
+  // ---- States ----
+  @include when(hit) {
+    border-color: var(--stx-color-primary);
+
+    @each $type in (primary, success, warning, danger, info) {
+      &.stx-tag--#{$type} {
+        border-color: var(--stx-color-#{$type});
+      }
+    }
+  }
+
+  @include when(round) {
+    border-radius: var(--stx-radius-round);
+  }
+
+  // ---- Elements ----
+  @include e(close) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    opacity: 0.7;
+    border-radius: 50%;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}

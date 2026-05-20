@@ -53,7 +53,7 @@ pnpm add stellux-ui
 ### Data Display
 
 - [ ] Table
-- [ ] Tag
+- [x] Tag
 - [ ] Badge
 - [ ] Avatar
 - [ ] Card
