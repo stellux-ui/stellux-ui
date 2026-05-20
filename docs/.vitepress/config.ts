@@ -52,6 +52,7 @@ export default defineConfig({
             { text: 'Skeleton', link: '/components/skeleton' },
             { text: 'Segmented', link: '/components/segmented' },
             { text: 'Timeline', link: '/components/timeline' },
+            { text: 'Descriptions', link: '/components/descriptions' },
         ]},
         { text: 'Navigation', items: [            { text: 'Menu', link: '/components/menu' },
             { text: 'Tabs', link: '/components/tabs' },
