@@ -1,0 +1,150 @@
+@use 'sass:map';
+@use '../mixins/bem' as *;
+@use '../mixins/function' as *;
+@use '../mixins/_var' as *;
+@use '../common/var';
+
+$radio: () !default;
+$radio: map.merge(
+  (
+    'font-size': getCssVar('font-size-base'),
+    'text-color': getCssVar('color-text-regular'),
+    'input-size': 16px,
+    'input-border-color': getCssVar('color-border-dark'),
+    'input-bg': getCssVar('color-bg'),
+    'checked-color': getCssVar('color-primary'),
+    'checked-inner-size': 8px,
+    'disabled-text': getCssVar('color-text-disabled'),
+    'disabled-border': getCssVar('color-border'),
+    'disabled-bg': getCssVar('color-bg-page'),
+  ),
+  $radio,
+);
+
+@include b(radio) {
+  @include set-component-css-var('radio', $radio);
+
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: getCssVar('radio', 'font-size');
+  color: getCssVar('radio', 'text-color');
+  margin-right: 24px;
+  user-select: none;
+  white-space: nowrap;
+  outline: none;
+  position: relative;
+  line-height: 1;
+
+  @include m(small) {
+    --stx-radio-font-size: #{getCssVar('font-size-sm')};
+    --stx-radio-input-size: 14px;
+    --stx-radio-checked-inner-size: 6px;
+  }
+
+  @include m(large) {
+    --stx-radio-font-size: #{getCssVar('font-size-md')};
+    --stx-radio-input-size: 18px;
+    --stx-radio-checked-inner-size: 10px;
+  }
+
+  @include when(bordered) {
+    border: 1px solid getCssVar('color-border');
+    border-radius: getCssVar('radius-base');
+    padding: 6px 16px 6px 12px;
+    transition: border-color 0.15s ease;
+
+    &.is-checked {
+      border-color: getCssVar('radio', 'checked-color');
+    }
+
+    &.is-disabled {
+      border-color: getCssVar('color-border');
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    color: getCssVar('radio', 'disabled-text');
+  }
+
+  @include when(checked) {
+    .stx-radio__inner {
+      border-color: getCssVar('radio', 'checked-color');
+      background-color: getCssVar('radio', 'checked-color');
+
+      &::after {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+  }
+
+  @include e(input) {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  @include e(original) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    outline: none;
+    border: none;
+    z-index: -1;
+  }
+
+  @include e(inner) {
+    display: inline-block;
+    width: getCssVar('radio', 'input-size');
+    height: getCssVar('radio', 'input-size');
+    border: 1px solid getCssVar('radio', 'input-border-color');
+    border-radius: 50%;
+    background-color: getCssVar('radio', 'input-bg');
+    box-sizing: border-box;
+    position: relative;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: getCssVar('radio', 'checked-inner-size');
+      height: getCssVar('radio', 'checked-inner-size');
+      border-radius: 50%;
+      background-color: #fff;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+  }
+
+  @include e(label) {
+    padding-left: 8px;
+    font-size: getCssVar('radio', 'font-size');
+    line-height: 1;
+  }
+
+  // Disabled states
+  &.is-disabled {
+    .stx-radio__inner {
+      border-color: getCssVar('radio', 'disabled-border');
+      background-color: getCssVar('radio', 'disabled-bg');
+    }
+
+    &.is-checked .stx-radio__inner {
+      border-color: getCssVar('radio', 'disabled-border');
+      background-color: getCssVar('radio', 'disabled-bg');
+
+      &::after {
+        background-color: getCssVar('radio', 'disabled-text');
+      }
+    }
+  }
+}

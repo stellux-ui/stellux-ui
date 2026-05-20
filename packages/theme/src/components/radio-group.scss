@@ -1,0 +1,17 @@
+@use '../mixins/bem' as *;
+
+@include b(radio-group) {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  line-height: 1;
+
+  .stx-radio {
+    margin-right: 24px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
